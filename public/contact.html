@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Help & Contact</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+      .contact-search h2 {
+        margin: 0 0 18px;
+        font-size: 1.75rem;
+        color: #111;
+      }
+
+      .contact-search-copy {
+        margin: 0 0 18px;
+        color: #4d5766;
+        font-size: 0.95rem;
+      }
+
+      .contact-search-form {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 12px;
+        margin-top: 20px;
+      }
+
+      .contact-search-form input {
+        width: 100%;
+        padding: 14px 16px;
+        border: 1px solid #d8d8d8;
+        border-radius: 999px;
+        background: #f7f7fb;
+        font-size: 1rem;
+        color: #111;
+        outline: none;
+      }
+
+      .contact-search-form button {
+        padding: 14px 24px;
+        border: none;
+        border-radius: 999px;
+        background: #0064d2;
+        color: #fff;
+        font-weight: 700;
+        cursor: pointer;
+        transition: background 0.2s ease;
+      }
+
+      .contact-search-form button:hover {
+        background: #004fb8;
+      }
+
+      .contact-suggestions,
+      .browse-help,
+      .contact-actions {
+        margin-top: 24px;
+        padding: 24px;
+        background: #fff;
+        border: 1px solid #e5e5e5;
+        border-radius: 24px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.04);
+      }
+
+      .suggestion-panel {
+        display: grid;
+        gap: 18px;
+      }
+
+      .suggestion-intro h3,
+      .browse-help h3 {
+        margin: 0 0 8px;
+        font-size: 1.2rem;
+      }
+
+      .suggestion-intro p {
+        margin: 0;
+        color: #536077;
+      }
+
+      .suggestion-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .suggestion-card {
+        background: #f8fafc;
+        border: 1px solid #e5e8f0;
+        border-radius: 20px;
+        padding: 20px;
+      }
+
+      .suggestion-primary {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .sign-in-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        padding: 14px 20px;
+        border-radius: 999px;
+        background: #0064d2;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .suggestion-cta {
+        margin: 0;
+        color: #4d5766;
+      }
+
+      .suggestion-cta a {
+        color: #0064d2;
+        text-decoration: none;
+      }
+
+      .suggestion-links a {
+        display: block;
+        color: #0f172a;
+        text-decoration: none;
+        padding: 12px 14px;
+        border-radius: 16px;
+        background: #fff;
+        border: 1px solid #e2e8f0;
+        margin-bottom: 10px;
+        transition: background 0.2s ease;
+      }
+
+      .suggestion-links a:hover {
+        background: #eff6ff;
+      }
+
+      .suggestion-links span {
+        display: block;
+        margin-top: 4px;
+        color: #64748b;
+        font-size: 0.88rem;
+      }
+
+      .help-topics {
+        display: grid;
+        gap: 18px;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        margin-top: 18px;
+      }
+
+      .topic-card {
+        display: grid;
+        gap: 16px;
+        align-items: center;
+        justify-items: center;
+        background: #f8fafc;
+        padding: 24px;
+        border-radius: 24px;
+        text-decoration: none;
+        color: #0f172a;
+        border: 1px solid transparent;
+        transition: background 0.2s ease, border-color 0.2s ease;
+      }
+
+      .topic-card:hover {
+        background: #eff6ff;
+        border-color: #bfdbfe;
+      }
+
+      .breadcrumb12 {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 6px;
+        margin-top: 12px;
+        font-size: 0.95rem;
+        color: #4d5766;
+        white-space: nowrap;
+      }
+
+      .breadcrumb12 a {
+        color: #0064d2;
+        text-decoration: none;
+        padding-bottom: 2px;
+        border-bottom: 1px solid #0064d2;
+      }
+
+      .breadcrumb12 a:hover {
+        color: #004fb8;
+      }
+
+      .breadcrumb12 .breadcrumb-current12 {
+        color: #0f172a;
+        font-weight: 600;
+      }
+
+      .breadcrumb12 .breadcrumb-separator {
+        color: #4d5766;
+      }
+
+      .topic-icon {
+        width: 68px;
+        height: 68px;
+        border-radius: 50%;
+        background: #fff;
+        display: grid;
+        place-items: center;
+        font-size: 1.8rem;
+        box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      }
+
+      .topic-card strong {
+        display: block;
+        text-align: center;
+        font-size: 0.98rem;
+      }
+
+      .contact-actions {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .action-panel {
+        background: #f8fafc;
+        border-radius: 24px;
+        padding: 24px;
+      }
+
+      .action-panel h3 {
+        margin: 0 0 12px;
+      }
+
+      .action-panel p {
+        margin: 0 0 18px;
+        color: #4d5766;
+      }
+
+      .contact-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 14px 22px;
+        border-radius: 999px;
+        background: #0064d2;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+      }
+
+      .action-secondary a {
+        display: block;
+        color: #0064d2;
+        text-decoration: none;
+        margin-bottom: 10px;
+      }
+
+      .action-secondary a:hover {
+        text-decoration: underline;
+      }
+
+      @media (max-width: 1024px) {
+        .suggestion-grid,
+        .help-topics,
+        .contact-actions {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .contact-search-form,
+        .help-topics {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 780px) {
+        .contact-search {
+          padding: 18px;
+        }
+      }
+    </style>
+</head>
+<body>
+<header>
+  <div class="top-bar">
+    <div class="top-bar-start">
+      <span>Hi! <a href=\"/login.html\">Login</a> or <a href=\"/register.html\">Register</a></span>
+      <nav class="top-links">
+        <a href="/deals.html">Deals</a>
+        <a href=\"/brand-outlet.html\">Brand outlet</a>
+        <a href=\"/gift-cards.html\">Gift Cards</a>
+        <a href=\"/contact.html\">Help & Contact</a>
+      </nav>
+    </div>
+    <div class="top-bar-end">
+      <a href=\"/ship-to.html\">Ship to</a>
+      <a href=\"/sell.html\">Sell</a>
+      <a href=\"/cart.html\">Cart</a>
+    </div>
+  </div>
+  <div class="main-header">
+    <a class="logo" href=\"/home.html\">
+      <img src="/assets/images/de-king-logo.svg" alt="De-King Logo">
+    </a>
+    <h1>customer service</h1><br>
+  </div>
+  <div class="breadcrumb12">
+      <a href=\"/home.html\">De-King</a>
+      <span class="breadcrumb-separator">›</span>
+      <span class="breadcrumb-current12">customer service</span>
+    </div><br>
+</header>
+<main class="contact-page-main">
+  <section class="contact-search">
+    <h2>How can we help you?</h2>
+    <p class="contact-search-copy">Search for help topics, orders, shipping, returns, account issues and more.</p>
+    <form class="contact-search-form" action="#" method="get">
+      <input type="search" name="q" placeholder="Search eBay help" required>
+      <button type="submit">Search</button>
+    </form>
+  </section>
+
+  <section class="contact-suggestions">
+    <div class="suggestion-panel">
+      <div class="suggestion-intro">
+        <h3>Suggestions for you</h3>
+        <p>Select an action or article to learn more.</p>
+      </div>
+      <div class="suggestion-grid">
+        <div class="suggestion-card suggestion-primary">
+          <strong>Get personalized help and see your recent orders</strong>
+          <a class="sign-in-button" href=\"/login.html\">Sign in</a>
+          <p class="suggestion-cta">Don't have an account? <a href=\"/register.html\">Register now</a></p>
+        </div>
+        <div class="suggestion-card suggestion-links">
+          <a href="#">Buying as a guest<span>Popular article · 4 min</span></a>
+          <a href="#">Get help with an item that hasn't arrived<span>Popular article · 4 min</span></a>
+          <a href="#">Get help with a hacked account<span>Popular article · 2 min</span></a>
+          <a href="#">Get help if you bought as a guest<span>Popular article · 3 min</span></a>
+          <a href="#">Creating an king account<span>Popular article · 2 min</span></a>
+          <a href="#">Reset your password<span>Popular article · 2 min</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="browse-help">
+    <h3>Browse help articles</h3>
+    <div class="help-topics">
+      <a href=\"/buying-help.html\" class="topic-card">
+        <div class="topic-icon">🛒</div>
+        <strong>Buying</strong>
+      </a>
+      <a href=\"/selling-help.html\" class="topic-card">
+        <div class="topic-icon">🏷️</div>
+        <strong>Selling</strong>
+      </a>
+      <a href=\"/account-help.html\" class="topic-card">
+        <div class="topic-icon">👤</div>
+        <strong>Account</strong>
+      </a>
+      <a href=\"/returns-refunds-help.html\" class="topic-card">
+        <div class="topic-icon">↩️</div>
+        <strong>Returns and refunds</strong>
+      </a>
+      <a href=\"/shipping-tracking-help.html\" class="topic-card">
+        <div class="topic-icon">🚚</div>
+        <strong>Shipping and tracking</strong>
+      </a>
+      <a href=\"/fees-billing-help.html\" class="topic-card">
+        <div class="topic-icon">💳</div>
+        <strong>Fees and billing</strong>
+      </a>
+    </div>
+  </section>
+ <script>
+let isLoggedIn = false;
+fetch("/api/session").then(r => r.ok ? r.json() : { authenticated: false }).then(data => {
+  isLoggedIn = Boolean(data && data.authenticated);
+}).catch(() => {});
+
+function requireLogin(actionName, redirectUrl) {
+  if (!isLoggedIn) {
+    window.location.href = "/register.html";
+  } else {
+    window.location.href = redirectUrl;
+  }
+}
+</script>
+
+
+
+  <section class="contact-actions">
+    <div class="action-panel">
+      <h3>Need more help?</h3>
+      <p>Get the help you need from our automated assistant, or contact an agent.</p>
+      <a class="contact-button" href=\"/contact-us.html\">Contact us</a>
+    </div>
+    <div class="action-panel action-secondary">
+      <h3>Other options for you</h3>
+      <a href="#" onclick="requireLogin('start a return', '/returns.html')">Start a return</a>
+      <a href="#" onclick="requireLogin('report an item', '/report-item.html')">Report an item that hasn't arrived</a>
+    </div>
+  </section>
+</main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-top">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h4>Buy</h4>
+        <ul>
+          <li><a href="#">Browse Products</a></li>
+          <li><a href="#">Deals</a></li>
+          <li><a href="#">Gift Cards</a></li>
+          <li><a href="#">Category Directory</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Sell</h4>
+        <ul>
+          <li><a href="#">Start Selling</a></li>
+          <li><a href="#">Seller Center</a></li>
+          <li><a href="#">Fees & Policies</a></li>
+          <li><a href="#">Sell Tools</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>About</h4>
+        <ul>
+          <li><a href="#">About De-King</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Corporate Responsibility</a></li>
+        </ul>
+      </div>
+      <div class="footer-column newsletter">
+        <h4>Stay in the loop</h4>
+        <p class="muted">Subscribe for deals, new arrivals and updates.</p>
+        <form class="newsletter-form" action="#" method="post" onsubmit="return false;">
+          <label for="newsletter-email" class="visually-hidden">Email address</label>
+          <input id="newsletter-email" type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

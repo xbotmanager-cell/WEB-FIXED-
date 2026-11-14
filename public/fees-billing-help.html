@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fees & Billing Help - De-King</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+      .help-page-main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .help-header {
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid #e5e5e5;
+      }
+
+      .help-header h1 {
+        font-size: 2.5rem;
+        margin: 0 0 10px;
+        color: #111;
+      }
+
+      .help-header p {
+        font-size: 1.1rem;
+        color: #536077;
+        margin: 0;
+      }
+
+      .help-section {
+        margin-bottom: 40px;
+      }
+
+      .help-section h2 {
+        font-size: 1.5rem;
+        margin: 0 0 20px;
+        color: #111;
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .faq-card {
+        background: #f8fafc;
+        border: 1px solid #e5e8f0;
+        border-radius: 12px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .faq-card:hover {
+        border-color: #0064d2;
+        box-shadow: 0 4px 12px rgba(0, 100, 210, 0.1);
+      }
+
+      .faq-card h3 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        color: #0f172a;
+      }
+
+      .faq-card p {
+        margin: 0;
+        color: #536077;
+        font-size: 0.9rem;
+        display: none;
+      }
+
+      .faq-card.active p {
+        display: block;
+      }
+
+      .breadcrumb12 {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 6px;
+        margin: 20px 0;
+        font-size: 0.95rem;
+        color: #4d5766;
+      }
+
+      .breadcrumb12 a {
+        color: #0064d2;
+        text-decoration: none;
+      }
+
+      .breadcrumb12 a:hover {
+        text-decoration: underline;
+      }
+
+      .breadcrumb12 .breadcrumb-separator {
+        color: #4d5766;
+      }
+
+      .tips-section {
+        background: #eff6ff;
+        border-left: 4px solid #0064d2;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 30px 0;
+      }
+
+      .tips-section h3 {
+        margin: 0 0 12px;
+        color: #0064d2;
+      }
+
+      .tips-section ul {
+        margin: 0;
+        padding-left: 20px;
+        color: #536077;
+      }
+
+      .tips-section li {
+        margin-bottom: 8px;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 14px 22px;
+        border-radius: 999px;
+        background: #0064d2;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        margin-top: 10px;
+      }
+
+      .fees-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        background: white;
+        border: 1px solid #e5e8f0;
+        border-radius: 12px;
+        overflow: hidden;
+      }
+
+      .fees-table thead {
+        background: #f8fafc;
+        border-bottom: 2px solid #e5e8f0;
+      }
+
+      .fees-table th {
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+        color: #0f172a;
+      }
+
+      .fees-table td {
+        padding: 15px;
+        border-bottom: 1px solid #e5e8f0;
+        color: #536077;
+      }
+
+      .fees-table tr:last-child td {
+        border-bottom: none;
+      }
+
+      .fee-badge {
+        display: inline-block;
+        background: #fff3cd;
+        color: #856404;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+    </style>
+</head>
+<body>
+<header>
+  <div class="top-bar">
+    <div class="top-bar-start">
+      <span>Hi! <a href=\"/login.html\">Login</a> or <a href=\"/register.html\">Register</a></span>
+      <nav class="top-links">
+        <a href="/deals.html">Deals</a>
+        <a href=\"/brand-outlet.html\">Brand outlet</a>
+        <a href=\"/gift-cards.html\">Gift Cards</a>
+        <a href=\"/contact.html\">Help & Contact</a>
+      </nav>
+    </div>
+    <div class="top-bar-end">
+      <a href=\"/ship-to.html\">Ship to</a>
+      <a href=\"/sell.html\">Sell</a>
+      <a href=\"/cart.html\">Cart</a>
+    </div>
+  </div>
+  <div class="main-header">
+    <a class="logo" href=\"/home.html\">
+      <img src="/assets/images/de-king-logo.svg" alt="De-King Logo">
+    </a>
+    <h1>Help Center</h1>
+  </div>
+  <div class="breadcrumb12">
+    <a href=\"/home.html\">De-King</a>
+    <span class="breadcrumb-separator">›</span>
+    <a href=\"/contact.html\">Help & Contact</a>
+    <span class="breadcrumb-separator">›</span>
+    <span>Fees & Billing</span>
+  </div>
+</header>
+
+<main class="help-page-main">
+  <div class="help-header">
+    <h1>💳 Fees & Billing</h1>
+    <p>Understand our fees and billing information for buyers and sellers</p>
+  </div>
+
+  <div class="help-section">
+    <h2>Selling Fees</h2>
+    <p>As a seller, you'll encounter these types of fees:</p>
+    <table class="fees-table">
+      <thead>
+        <tr>
+          <th>Fee Type</th>
+          <th>Amount</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Insertion Fee</td>
+          <td>$0.30 - $4.80</td>
+          <td>Fee to list an item. Amount depends on starting price or reserve price.</td>
+        </tr>
+        <tr>
+          <td>Final Value Fee</td>
+          <td>12.9% of sale price</td>
+          <td>Percentage of final sale price charged when item sells.</td>
+        </tr>
+        <tr>
+          <td>Featured Listing</td>
+          <td>$3.95 - $79.95</td>
+          <td>Optional upgrade to promote your listing in search results.</td>
+        </tr>
+        <tr>
+          <td>Gallery Picture</td>
+          <td>$0.15 per image</td>
+          <td>Add multiple product photos to your listing.</td>
+        </tr>
+        <tr>
+          <td>Bold Title</td>
+          <td>$2.00</td>
+          <td>Make your listing title stand out in search results.</td>
+        </tr>
+        <tr>
+          <td>Store Subscription</td>
+          <td>$27.95/month</td>
+          <td>Open an online store with customizable shop page.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="help-section">
+    <h2>Buyer Information</h2>
+    <p>As a buyer, you pay for items and shipping. Payment methods include:</p>
+    <ul style="color: #536077; line-height: 1.8;">
+      <li>💳 Credit Cards (Visa, Mastercard, American Express, Discover)</li>
+      <li>💳 Debit Cards</li>
+      <li>🏪 PayPal</li>
+      <li>📱 Apple Pay</li>
+      <li>📱 Google Pay</li>
+    </ul>
+    <p style="color: #536077;"><strong>No transaction fees for buyers!</strong> You only pay for the item and shipping.</p>
+  </div>
+
+  <div class="help-section">
+    <h2>Common Questions</h2>
+    <div class="faq-grid">
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>Why am I being charged a fee?</h3>
+        <p>Fees help us maintain our platform and keep the marketplace safe and secure. For sellers, fees cover listing and transaction costs. These fees help support buyer protection and seller tools.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>Can I get a fee refund?</h3>
+        <p>If you cancel a listing before it sells, insertion fees are non-refundable. If an item is withdrawn after receiving bids/offers, fees typically are not refunded. Final Value Fees are refunded if the sale is cancelled.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>What if I accidentally paid twice?</h3>
+        <p>Contact our billing support immediately with your order number and payment receipts. We'll investigate duplicate charges and process a refund within 5-7 business days if confirmed.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>How do I pay my fees?</h3>
+        <p>Fees are automatically charged to your registered payment method (usually the same card or account used for the transaction). You'll receive an invoice via email for your records.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>Can I get an invoice for my purchases?</h3>
+        <p>Yes! Log into your account, go to "Account Settings," and select "Invoices" or "Receipts." You can view and download invoices for all transactions dating back several years.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>What are subscription fees?</h3>
+        <p>Store subscriptions are optional monthly fees that give sellers access to a storefront, advanced analytics, and additional listing upgrades. You can cancel anytime in your account settings.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>Are there different fee structures?</h3>
+        <p>Yes, fees vary by category, location, and seller status. Some categories have different Final Value Fee percentages. Contact us for detailed fee information for your specific category.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>How do I dispute a charge?</h3>
+        <p>If you believe a charge is incorrect, go to "Account Settings" > "Billing" and click "Report a Problem." Provide details and supporting documentation. We'll review and respond within 5 business days.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-section">
+    <h3>💡 Money-Saving Tips</h3>
+    <ul>
+      <li><strong>Plan your listings:</strong> Avoid listing errors that result in wasted insertion fees.</li>
+      <li><strong>Use free upgrades:</strong> Many great features are free (good description, clear photos, etc.).</li>
+      <li><strong>Batch listings:</strong> Create multiple listings in one session to save time and fees.</li>
+      <li><strong>Monitor store subscriptions:</strong> Cancel if you're not actively selling.</li>
+      <li><strong>Check fee estimates:</strong> Our calculator shows you estimated fees before listing.</li>
+      <li><strong>Combine items:</strong> Bundle items to increase average order value vs. listing individually.</li>
+      <li><strong>Use promotions wisely:</strong> Optional upgrades should focus on high-value items only.</li>
+    </ul>
+  </div>
+
+  <div class="help-section">
+    <h2>Manage Your Billing</h2>
+    <p>View your invoices, subscriptions, and payment methods:</p>
+    <a href=\"/account-settings.html\" class="cta-button">Go to Account Settings</a>
+  </div>
+
+  <div class="help-section">
+    <h2>Need More Help?</h2>
+    <p>Contact our billing support team:</p>
+    <a href=\"/contact-us.html\" class="cta-button">Contact Support</a>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-top">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h4>Buy</h4>
+        <ul>
+          <li><a href=\"/home.html\">Browse Products</a></li>
+          <li><a href="/deals.html">Deals</a></li>
+          <li><a href=\"/gift-cards.html\">Gift Cards</a></li>
+          <li><a href="/brand-outlet.html">Category Directory</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Sell</h4>
+        <ul>
+          <li><a href=\"/sell.html\">Start Selling</a></li>
+          <li><a href=\"/selling-help.html\">Seller Center</a></li>
+          <li><a href=\"/fees-billing-help.html\">Fees & Policies</a></li>
+          <li><a href=\"/selling-help.html\">Sell Tools</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>About</h4>
+        <ul>
+          <li><a href=\"/home.html\">About De-King</a></li>
+          <li><a href=\"/home.html\">Careers</a></li>
+          <li><a href=\"/home.html\">Press</a></li>
+          <li><a href=\"/home.html\">Corporate Responsibility</a></li>
+        </ul>
+      </div>
+      <div class="footer-column newsletter">
+        <h4>Stay in the loop</h4>
+        <p class="muted">Subscribe for deals, new arrivals and updates.</p>
+        <form class="newsletter-form" action="#" method="post" onsubmit="return false;">
+          <label for="newsletter-email" class="visually-hidden">Email address</label>
+          <input id="newsletter-email" type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(element) {
+  element.classList.toggle('active');
+}
+</script>
+</body>
+</html>

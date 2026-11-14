@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Outlet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+      .actions-bar { display: flex; gap: 1rem; justify-content: flex-end; flex-wrap: wrap; margin: 16px 0; }
+      .view-dropdown, .sort-container { position: relative; display: inline-block; }
+      .view-toggle, .sort-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        border: 1px solid #b397fc;
+        background: rgba(179, 151, 252, 0.1);
+        color: #5f3dc4;
+        cursor: pointer;
+        font: inherit;
+        border-radius: 24px;
+        padding: 8px 12px;
+      }
+      .view-menu, .sort-menu {
+        position: absolute;
+        top: calc(100% + 0.4rem);
+        right: 0;
+        min-width: 220px;
+        padding: 0.5rem 0;
+        margin: 0;
+        list-style: none;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background: #fff;
+        box-shadow: 0 10px 24px rgba(0,0,0,.12);
+        z-index: 10;
+      }
+      .view-menu.hidden, .sort-menu.hidden { display: none; }
+      .view-menu li, .sort-menu li { margin: 0; }
+      .view-menu button.view-option,
+      .sort-menu button.sort-option {
+        width: 100%;
+        text-align: left;
+        padding: 0.75rem 1rem;
+        background: none;
+        border: none;
+        color: #333;
+        cursor: pointer;
+      }
+      .view-menu button.view-option:hover,
+      .sort-menu button.sort-option:hover { background: #f5f5ff; }
+      .view-text, .sort-text { text-transform: capitalize; }
+
+      .results { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 1rem; transition: all 0.3s ease; margin-top: 0.75rem; }
+      .results .product { display: flex; flex-direction: column; gap: 0.75rem; background: #f9f9f9;   padding: 1rem; transition: transform 0.3s ease, box-shadow 0.3s ease; }
+      .results .product:hover { transform: translateY(-2px); box-shadow: 0 16px 35px rgba(0,0,0,0.08); }
+      .results .product .image { min-height: 180px; overflow: hidden; border-radius: 14px; display: flex; align-items: center; justify-content: center; }
+      .results .product .image img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
+      .results .product:hover .image img { transform: scale(1.03); }
+      .results .product .info { display: flex; flex-direction: column; gap: 0.5rem; }
+      .results.list-view { display: flex; flex-direction: column; }
+      .results.list-view .product { flex-direction: row; align-items: stretch; }
+      .results.list-view .product .image { flex: 0 0 240px; min-height: 180px; }
+      .results.list-view .product .info { flex: 1; }
+      .results.compact-view { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0.75rem; }
+      .results.compact-view .product { padding: 0.85rem; font-size: 0.95rem; }
+      .results.compact-view .product .image { min-height: 140px; }
+
+      .breadcrumb11 {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 8px;
+        margin-top: 12px;
+        font-size: 0.95rem;
+        color: #4d5766;
+        white-space: nowrap;
+        padding-left: 183px;
+      }
+
+      .breadcrumb11 a {
+        color: #0064d2;
+        text-decoration: none;
+        padding-bottom: 2px;
+        border-bottom: 1px solid #0064d2;
+      }
+
+      .breadcrumb11 a:hover {
+        color: #004fb8;
+      }
+
+      .breadcrumb11 .breadcrumb-separator {
+        color: #4d5766;
+      }
+
+      .breadcrumb-current11 {
+        color: #0f172a;
+        font-weight: 600;
+      }
+    </style>
+</head>
+<body>
+<header>
+  <div class="top-bar">
+    <div class="top-bar-start">
+      <span>Hi! <a href=\"/login.html\">Login</a> or <a href=\"/register.html\">Register</a></span>
+      <nav class="top-links">
+        <a href="/deals.html">Deals</a>
+        <a href=\"/brand-outlet.html\">Brand outlet</a>
+        <a href=\"/gift-cards.html\">Gift Cards</a>
+        <a href=\"/contact.html\">Help & Contact</a>
+      </nav>
+    </div>
+    <div class="top-bar-end">
+      <a href=\"/ship-to.html\">Ship to</a>
+      <a href=\"/sell.html\">Sell</a>
+           <select name="watchlist">
+        <option>Watchlist</option>
+        <option>""</option>
+        <option>""</option>
+        <option>""</option>
+        <option>Watchlist</option>
+      </select>
+      <select name="my-kings">
+        <option>My kings</option>
+        <option>""</option>
+        <option>""</option>
+        <option>""</option>
+      </select>
+      <a href=\"/cart.html\">Cart</a>
+    </div>
+  </div>
+  <div class="main-header">
+    <a class="logo" href=\"/home.html\">
+      <img src="/assets/images/de-king-logo.svg" alt="De-King Logo">
+    </a>
+  <form class="search-form" action="#" method="get">
+      <select name="category">
+        <option>All categories</option>
+        <option>Laptops</option>
+        <option>Smartphones</option>
+        <option>Tablets</option>
+      </select>
+      <input type="text" name="q" placeholder="Search for anything">
+      <button type="submit">Search</button>
+    </form>
+    <div class="header-actions">
+      <button type="button" class="icon-btn notify-btn" title="Allow notifications">
+        <span class="icon">🔔</span>
+        <span class="label">Enable notifications</span>
+      </button>
+      <a href=\"/cart.html\" class="icon-btn cart-btn" title="View cart">
+        <span class="icon">🛒</span>
+        <span class="label">Cart</span>
+        <span class="badge">3</span>
+      </a>
+    </div>
+</header>
+<div class="breadcrumb11">
+  <a href=\"/home.html\">De-King</a>
+  <span class="breadcrumb-separator">›</span>
+  <span class="breadcrumb-current11">Brand Outlet</span>
+</div><br>
+  <div class="breadcrumb2"><h1>Brand Outlet</h1>
+  <p>Explore outlet deals, closeout items, and brand specials curated for value shoppers.</p></div><br>
+  <div class="filters">
+<select class="brand-filter" onchange="filterBrands(this.value)">
+  <option value="">All Brands</option>
+  <option value="brand-a"><a href=\"/all-brand-a.html\">Brand A</a></option>
+  <option value="brand-b"><a href=\"/all-brand-b.html\">Brand B</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/all-brand-c.html\">Brand C</a></option>
+</select>
+<select class="brand-filter" onchange="filterBrands(this.value)">
+  <option value="">country of origin</option>
+  <option value="brand-a"><a href=\"/country-origin-a.html\">Brand A</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-b"><a href=\"/country-origin-b.html\">Brand B</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+  <option value="brand-c"><a href=\"/country-origin-c.html\">Brand C</a></option>
+</select>
+<select class="brand-filter" onchange="filterBrands(this.value)">
+  <option value="">condition</option>
+  <option value="brand-a">Brand A</option>
+  <option value="brand-b">Brand B</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+</select>
+<select class="brand-filter" onchange="filterBrands(this.value)">
+  <option value="">price</option>
+  <option value="brand-a">Brand A</option>
+  <option value="brand-b">Brand B</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+</select>
+<select class="brand-filter" onchange="filterBrands(this.value)">
+  <option value="">Buying format</option>
+  <option value="brand-a">Brand A</option>
+  <option value="brand-b">Brand B</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+</select>
+<select class="brand-filter" onchange="filterBrands(this.value)">
+  <option value="">all filters</option>
+  <option value="brand-a">Brand A</option>
+  <option value="brand-b">Brand B</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+  <option value="brand-c">Brand C</option>
+</select></div>
+<div class="actions-bar">
+  <div class="view-dropdown">
+    <button id="viewToggle" type="button" class="view-toggle" aria-expanded="false" aria-controls="viewMenu">
+      <i class="fa-solid fa-eye" style="color: rgb(177, 151, 252);"></i>
+      <span class="view-text">list view</span>
+      <i class="fa-solid fa-angle-down" style="color: rgb(177, 151, 252);"></i>
+    </button>
+    <ul id="viewMenu" class="view-menu hidden" role="menu" aria-label="View options">
+       <li><button type="button" class="view-option" data-view="list">List view</button></li>
+      <li><button type="button" class="view-option" data-view="grid">Grid view</button></li>
+      <li><button type="button" class="view-option" data-view="compact">Compact view</button></li>
+    </ul>
+  </div>
+  <div class="sort-container">
+    <button id="sortToggle" type="button" class="sort-toggle" aria-expanded="false" aria-controls="sortMenu">
+      <i class="fa-solid fa-sort" style="color: rgb(177, 151, 252);"></i>
+      <span class="sort-text">sort</span>
+    </button>
+    <ul id="sortMenu" class="sort-menu hidden" role="menu" aria-label="Sort options">
+      <li><button type="button" class="sort-option" data-sort="relevance">Relevance</button></li>
+      <li><button type="button" class="sort-option" data-sort="price-low-high">Price: Low to High</button></li>
+      <li><button type="button" class="sort-option" data-sort="price-high-low">Price: High to Low</button></li>
+      <li><button type="button" class="sort-option" data-sort="newest">Newest arrivals</button></li>
+      <li><button type="button" class="sort-option" data-sort="rating">Top rated</button></li>
+    </ul>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const sortToggle = document.getElementById('sortToggle');
+    const sortMenu = document.getElementById('sortMenu');
+    const viewToggle = document.getElementById('viewToggle');
+    const viewMenu = document.getElementById('viewMenu');
+    const resultsSection = document.getElementById('resultsSection');
+    if (!sortToggle || !sortMenu || !viewToggle || !viewMenu || !resultsSection) return;
+
+    const products = Array.from(resultsSection.querySelectorAll('.product'));
+    products.forEach((product, index) => {
+      const priceText = product.querySelector('.price')?.textContent || '';
+      const match = priceText.replace(/,/g, '').match(/\$\s*([0-9]+(?:\.[0-9]+)?)/);
+      product.dataset.priceValue = match ? Number(match[1]) : Infinity;
+      product.dataset.originalOrder = String(index);
+      product.dataset.ratingValue = String(5 - (index % 5) * 0.5);
+    });
+
+    const sortFunctions = {
+      relevance: (a, b) => Number(a.dataset.originalOrder) - Number(b.dataset.originalOrder),
+      'price-low-high': (a, b) => Number(a.dataset.priceValue) - Number(b.dataset.priceValue),
+      'price-high-low': (a, b) => Number(b.dataset.priceValue) - Number(a.dataset.priceValue),
+      newest: (a, b) => Number(b.dataset.originalOrder) - Number(a.dataset.originalOrder),
+      rating: (a, b) => Number(b.dataset.ratingValue) - Number(a.dataset.ratingValue),
+    };
+
+    function reorderProducts(sortKey) {
+      const sorted = [...products].sort(sortFunctions[sortKey] || sortFunctions.relevance);
+      sorted.forEach((product) => resultsSection.appendChild(product));
+    }
+
+    sortToggle.addEventListener('click', () => {
+      const isOpen = !sortMenu.classList.toggle('hidden');
+      sortToggle.setAttribute('aria-expanded', String(isOpen));
+      viewMenu.classList.add('hidden');
+      viewToggle.setAttribute('aria-expanded', 'false');
+    });
+
+    viewToggle.addEventListener('click', () => {
+      const isOpen = !viewMenu.classList.toggle('hidden');
+      viewToggle.setAttribute('aria-expanded', String(isOpen));
+      sortMenu.classList.add('hidden');
+      sortToggle.setAttribute('aria-expanded', 'false');
+    });
+
+    document.addEventListener('click', (event) => {
+      const target = event.target;
+      if (!sortToggle.contains(target) && !sortMenu.contains(target)) {
+        sortMenu.classList.add('hidden');
+        sortToggle.setAttribute('aria-expanded', 'false');
+      }
+      if (!viewToggle.contains(target) && !viewMenu.contains(target)) {
+        viewMenu.classList.add('hidden');
+        viewToggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    sortMenu.addEventListener('click', (event) => {
+      const button = event.target.closest('button.sort-option');
+      if (!button) return;
+      const selected = button.textContent.trim();
+      const sortKey = button.dataset.sort;
+      sortToggle.querySelector('.sort-text').textContent = selected;
+      sortMenu.classList.add('hidden');
+      sortToggle.setAttribute('aria-expanded', 'false');
+      reorderProducts(sortKey);
+    });
+
+    viewMenu.addEventListener('click', (event) => {
+      const button = event.target.closest('button.view-option');
+      if (!button) return;
+      const selected = button.textContent.trim();
+      const viewKey = button.dataset.view;
+      viewToggle.querySelector('.view-text').textContent = selected;
+      viewMenu.classList.add('hidden');
+      viewToggle.setAttribute('aria-expanded', 'false');
+      resultsSection.classList.remove('grid-view', 'list-view', 'compact-view');
+      resultsSection.classList.add(`${viewKey}-view`);
+    });
+  });
+
+    window.filterBrands = function(value) {
+      if (value && value.endsWith(".html")) {
+        window.location.href = value;
+      }
+    };
+</script>
+
+<section id="resultsSection" class="results list-view">
+  <div class="words">  <h2>Clothing, Shoes & Accessories</h2>
+    <p>10,925 results</p></div><br>
+
+    <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="Coach Erin Peony Bag">
+      </div>
+      <div class="info">
+        <h3>NWT Coach Erin Peony Pebble Leather Shoulder Bag</h3>
+        <p class="price">$500.00 <span>Free International Shipping</span></p>
+        <p class="tag">Authenticity Guarantee</p>
+      </div>
+    </div>
+
+    <div class="product">
+     <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div>
+
+    <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div>
+ <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div> <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div> <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div> <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div> <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div> <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div> <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div> <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div> <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div> <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div> <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div> <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div> <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div> <div class="product">
+      <div class="image">
+        <img src="/assets/images/ttt6.jpg" alt="USB-C Fast Charger">
+      </div>
+      <div class="info">
+        <h3>25W Type USB-C Fast Wall Charger + 6FT Cable (Samsung Galaxy S20/S21)</h3>
+        <p class="price">$2.69 – $1,215.59 <span>Free International Shipping</span></p>
+        <p class="tag">Lowest Price</p>
+      </div>
+    </div>
+
+
+
+
+
+
+  </section>
+
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-top">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h4>Buy</h4>
+        <ul>
+          <li><a href="#">Browse Products</a></li>
+          <li><a href="#">Deals</a></li>
+          <li><a href="#">Gift Cards</a></li>
+          <li><a href="#">Category Directory</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Sell</h4>
+        <ul Selling</a></li>
+          <li><a href="#">Seller Center</a></li>
+          <li><a href="#">Fees & Policies</a></li>
+          <li><a href="#">Sell Tools</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>About</h4>
+        <ul>
+          <li><a href="#">About De-King</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Corporate Responsibility</a></li>
+        </ul>
+      </div>
+      <div class="footer-column newsletter">
+        <h4>Stay in the loop</h4>
+        <p class="muted">Subscribe for deals, new arrivals and updates.</p>
+        <form class="newsletter-form" action="#" method="post" onsubmit="return false;">
+          <label for="newsletter-email" class="visually-hidden">Email address</label>
+          <input id="newsletter-email" type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selling Help - De-King</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+      .help-page-main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .help-header {
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid #e5e5e5;
+      }
+
+      .help-header h1 {
+        font-size: 2.5rem;
+        margin: 0 0 10px;
+        color: #111;
+      }
+
+      .help-header p {
+        font-size: 1.1rem;
+        color: #536077;
+        margin: 0;
+      }
+
+      .help-section {
+        margin-bottom: 40px;
+      }
+
+      .help-section h2 {
+        font-size: 1.5rem;
+        margin: 0 0 20px;
+        color: #111;
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .faq-card {
+        background: #f8fafc;
+        border: 1px solid #e5e8f0;
+        border-radius: 12px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .faq-card:hover {
+        border-color: #0064d2;
+        box-shadow: 0 4px 12px rgba(0, 100, 210, 0.1);
+      }
+
+      .faq-card h3 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        color: #0f172a;
+      }
+
+      .faq-card p {
+        margin: 0;
+        color: #536077;
+        font-size: 0.9rem;
+        display: none;
+      }
+
+      .faq-card.active p {
+        display: block;
+      }
+
+      .breadcrumb12 {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 6px;
+        margin: 20px 0;
+        font-size: 0.95rem;
+        color: #4d5766;
+      }
+
+      .breadcrumb12 a {
+        color: #0064d2;
+        text-decoration: none;
+      }
+
+      .breadcrumb12 a:hover {
+        text-decoration: underline;
+      }
+
+      .breadcrumb12 .breadcrumb-separator {
+        color: #4d5766;
+      }
+
+      .tips-section {
+        background: #eff6ff;
+        border-left: 4px solid #0064d2;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 30px 0;
+      }
+
+      .tips-section h3 {
+        margin: 0 0 12px;
+        color: #0064d2;
+      }
+
+      .tips-section ul {
+        margin: 0;
+        padding-left: 20px;
+        color: #536077;
+      }
+
+      .tips-section li {
+        margin-bottom: 8px;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 14px 22px;
+        border-radius: 999px;
+        background: #0064d2;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        margin-top: 10px;
+      }
+    </style>
+</head>
+<body>
+<header>
+  <div class="top-bar">
+    <div class="top-bar-start">
+      <span>Hi! <a href=\"/login.html\">Login</a> or <a href=\"/register.html\">Register</a></span>
+      <nav class="top-links">
+        <a href="/deals.html">Deals</a>
+        <a href=\"/brand-outlet.html\">Brand outlet</a>
+        <a href=\"/gift-cards.html\">Gift Cards</a>
+        <a href=\"/contact.html\">Help & Contact</a>
+      </nav>
+    </div>
+    <div class="top-bar-end">
+      <a href=\"/ship-to.html\">Ship to</a>
+      <a href=\"/sell.html\">Sell</a>
+      <a href=\"/cart.html\">Cart</a>
+    </div>
+  </div>
+  <div class="main-header">
+    <a class="logo" href=\"/home.html\">
+      <img src="/assets/images/de-king-logo.svg" alt="De-King Logo">
+    </a>
+    <h1>Help Center</h1>
+  </div>
+  <div class="breadcrumb12">
+    <a href=\"/home.html\">De-King</a>
+    <span class="breadcrumb-separator">›</span>
+    <a href=\"/contact.html\">Help & Contact</a>
+    <span class="breadcrumb-separator">›</span>
+    <span>Selling Help</span>
+  </div>
+</header>
+
+<main class="help-page-main">
+  <div class="help-header">
+    <h1>🏷️ Selling Help</h1>
+    <p>Get started as a seller and maximize your sales on De-King</p>
+  </div>
+
+  <div class="help-section">
+    <h2>Common Questions</h2>
+    <div class="faq-grid">
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>How do I start selling?</h3>
+        <p>First, create a De-King account or log in. Then visit the Seller Center and click "Start Selling." You'll need to provide basic information and agree to our seller terms. After that, you can create your first listing.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>What items can I sell?</h3>
+        <p>You can sell most items including electronics, fashion, collectibles, home goods, and more. However, some items are restricted (hazardous materials, counterfeit goods, etc.). Review our restricted items policy before listing.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>How do I create a listing?</h3>
+        <p>Go to Seller Center, click "Create Listing," select your item category, add photos, write a description, set your price or starting bid, and choose auction or fixed-price format. Review everything and publish your listing.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>What are the selling fees?</h3>
+        <p>Insertion fees range from $0.30-$4.80 depending on item value. Final Value Fees are typically 12.9% of the sale price. Premium services like featured listings have additional costs. See our Fees page for detailed information.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>How do I get paid?</h3>
+        <p>After a buyer completes payment, funds are deposited to your registered bank account or PayPal within 1-3 business days. You can track payments in your Seller Center dashboard.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>How do I handle disputes?</h3>
+        <p>If a buyer opens a case, you'll receive a notification. You can respond with evidence (tracking, photos, etc.) to resolve the issue. De-King's Resolution Center helps mediate disputes fairly.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-section">
+    <h3>💡 Seller Tips</h3>
+    <ul>
+      <li><strong>Use high-quality photos:</strong> Take clear, well-lit photos from multiple angles. Use our photo editing tools.</li>
+      <li><strong>Write detailed descriptions:</strong> Include size, condition, color, defects, and all relevant details. Honest descriptions reduce returns.</li>
+      <li><strong>Price competitively:</strong> Research similar items to set competitive prices and attract buyers.</li>
+      <li><strong>Ship quickly:</strong> Process orders within 1-2 business days to maintain good seller ratings.</li>
+      <li><strong>Offer multiple shipping options:</strong> Let buyers choose between standard and expedited shipping.</li>
+      <li><strong>Build positive feedback:</strong> Communicate promptly, ship carefully, and handle issues professionally.</li>
+      <li><strong>Use keywords strategically:</strong> Include relevant search terms in your title and description.</li>
+    </ul>
+  </div>
+
+  <div class="help-section">
+    <h2>Ready to Start Selling?</h2>
+    <p>Join thousands of successful sellers on De-King. Get access to powerful selling tools, analytics, and support.</p>
+    <a href=\"/sell.html\" class="cta-button">Go to Seller Center</a>
+  </div>
+
+  <div class="help-section">
+    <h2>Need More Help?</h2>
+    <p>Contact our seller support team for assistance:</p>
+    <a href=\"/contact-us.html\" class="cta-button">Contact Support</a>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-top">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h4>Buy</h4>
+        <ul>
+          <li><a href=\"/home.html\">Browse Products</a></li>
+          <li><a href="/deals.html">Deals</a></li>
+          <li><a href=\"/gift-cards.html\">Gift Cards</a></li>
+          <li><a href="/brand-outlet.html">Category Directory</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Sell</h4>
+        <ul>
+          <li><a href=\"/sell.html\">Start Selling</a></li>
+          <li><a href=\"/selling-help.html\">Seller Center</a></li>
+          <li><a href=\"/fees-billing-help.html\">Fees & Policies</a></li>
+          <li><a href=\"/selling-help.html\">Sell Tools</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>About</h4>
+        <ul>
+          <li><a href=\"/home.html\">About De-King</a></li>
+          <li><a href=\"/home.html\">Careers</a></li>
+          <li><a href=\"/home.html\">Press</a></li>
+          <li><a href=\"/home.html\">Corporate Responsibility</a></li>
+        </ul>
+      </div>
+      <div class="footer-column newsletter">
+        <h4>Stay in the loop</h4>
+        <p class="muted">Subscribe for deals, new arrivals and updates.</p>
+        <form class="newsletter-form" action="#" method="post" onsubmit="return false;">
+          <label for="newsletter-email" class="visually-hidden">Email address</label>
+          <input id="newsletter-email" type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(element) {
+  element.classList.toggle('active');
+}
+</script>
+</body>
+</html>

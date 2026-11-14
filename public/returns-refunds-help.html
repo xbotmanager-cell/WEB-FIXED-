@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Returns & Refunds Help - De-King</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+      .help-page-main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .help-header {
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid #e5e5e5;
+      }
+
+      .help-header h1 {
+        font-size: 2.5rem;
+        margin: 0 0 10px;
+        color: #111;
+      }
+
+      .help-header p {
+        font-size: 1.1rem;
+        color: #536077;
+        margin: 0;
+      }
+
+      .help-section {
+        margin-bottom: 40px;
+      }
+
+      .help-section h2 {
+        font-size: 1.5rem;
+        margin: 0 0 20px;
+        color: #111;
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .faq-card {
+        background: #f8fafc;
+        border: 1px solid #e5e8f0;
+        border-radius: 12px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .faq-card:hover {
+        border-color: #0064d2;
+        box-shadow: 0 4px 12px rgba(0, 100, 210, 0.1);
+      }
+
+      .faq-card h3 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        color: #0f172a;
+      }
+
+      .faq-card p {
+        margin: 0;
+        color: #536077;
+        font-size: 0.9rem;
+        display: none;
+      }
+
+      .faq-card.active p {
+        display: block;
+      }
+
+      .breadcrumb12 {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 6px;
+        margin: 20px 0;
+        font-size: 0.95rem;
+        color: #4d5766;
+      }
+
+      .breadcrumb12 a {
+        color: #0064d2;
+        text-decoration: none;
+      }
+
+      .breadcrumb12 a:hover {
+        text-decoration: underline;
+      }
+
+      .breadcrumb12 .breadcrumb-separator {
+        color: #4d5766;
+      }
+
+      .tips-section {
+        background: #eff6ff;
+        border-left: 4px solid #0064d2;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 30px 0;
+      }
+
+      .tips-section h3 {
+        margin: 0 0 12px;
+        color: #0064d2;
+      }
+
+      .tips-section ul {
+        margin: 0;
+        padding-left: 20px;
+        color: #536077;
+      }
+
+      .tips-section li {
+        margin-bottom: 8px;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 14px 22px;
+        border-radius: 999px;
+        background: #0064d2;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        margin-top: 10px;
+      }
+
+      .process-steps {
+        background: #f8fafc;
+        padding: 20px;
+        border-radius: 12px;
+        margin: 20px 0;
+      }
+
+      .step {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 15px;
+      }
+
+      .step-number {
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        background: #0064d2;
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+      }
+
+      .step-content h4 {
+        margin: 0 0 5px;
+        color: #0f172a;
+      }
+
+      .step-content p {
+        margin: 0;
+        color: #536077;
+        font-size: 0.9rem;
+      }
+    </style>
+</head>
+<body>
+<header>
+  <div class="top-bar">
+    <div class="top-bar-start">
+      <span>Hi! <a href=\"/login.html\">Login</a> or <a href=\"/register.html\">Register</a></span>
+      <nav class="top-links">
+        <a href="/deals.html">Deals</a>
+        <a href=\"/brand-outlet.html\">Brand outlet</a>
+        <a href=\"/gift-cards.html\">Gift Cards</a>
+        <a href=\"/contact.html\">Help & Contact</a>
+      </nav>
+    </div>
+    <div class="top-bar-end">
+      <a href=\"/ship-to.html\">Ship to</a>
+      <a href=\"/sell.html\">Sell</a>
+      <a href=\"/cart.html\">Cart</a>
+    </div>
+  </div>
+  <div class="main-header">
+    <a class="logo" href=\"/home.html\">
+      <img src="/assets/images/de-king-logo.svg" alt="De-King Logo">
+    </a>
+    <h1>Help Center</h1>
+  </div>
+  <div class="breadcrumb12">
+    <a href=\"/home.html\">De-King</a>
+    <span class="breadcrumb-separator">›</span>
+    <a href=\"/contact.html\">Help & Contact</a>
+    <span class="breadcrumb-separator">›</span>
+    <span>Returns & Refunds</span>
+  </div>
+</header>
+
+<main class="help-page-main">
+  <div class="help-header">
+    <h1>↩️ Returns & Refunds</h1>
+    <p>Learn about our return policy and how to get refunds</p>
+  </div>
+
+  <div class="help-section">
+    <h2>How Returns Work</h2>
+    <div class="process-steps">
+      <div class="step">
+        <div class="step-number">1</div>
+        <div class="step-content">
+          <h4>Check Return Eligibility</h4>
+          <p>Items must be returned within the seller's return window (usually 14-30 days) in original condition.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">2</div>
+        <div class="step-content">
+          <h4>Contact the Seller</h4>
+          <p>Go to Purchase History, select the item, and click "Return or Refund." Follow the seller's instructions.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">3</div>
+        <div class="step-content">
+          <h4>Ship the Item Back</h4>
+          <p>Get a return shipping label, pack the item securely, and ship it back within 30 days.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-number">4</div>
+        <div class="step-content">
+          <h4>Receive Your Refund</h4>
+          <p>Once the seller confirms receipt, your refund will be processed within 5-7 business days.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="help-section">
+    <h2>Common Questions</h2>
+    <div class="faq-grid">
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>Can I return an item?</h3>
+        <p>Most items can be returned within 14-30 days if they're unused and in original condition. Some categories like electronics have specific conditions. Check the listing for the seller's return policy.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>Who pays for return shipping?</h3>
+        <p>The seller typically provides a prepaid shipping label for returns. If you opened a case for item not as described, shipping is usually free for you.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>How long does a refund take?</h3>
+        <p>After the seller confirms receipt of the returned item, your refund is usually processed within 5-7 business days. It may take an additional 3-5 days to appear in your account.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>What if the seller won't accept my return?</h3>
+        <p>If you believe the return is valid, you can open a case in our Resolution Center. We'll investigate and help you resolve the issue fairly.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>Can I return an item if I changed my mind?</h3>
+        <p>This depends on the seller's return policy. Some sellers accept returns for any reason within 30 days, while others only accept returns for defective items.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>What about damaged or defective items?</h3>
+        <p>If your item arrives damaged or defective, contact the seller immediately. Take photos of the damage and provide them as evidence. You may be eligible for a full refund without returning the item.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>How do I track my return shipment?</h3>
+        <p>Once you ship your return, you'll receive a tracking number. Use it to monitor your package's progress. Share the tracking info with the seller for faster processing.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>What if my refund hasn't arrived?</h3>
+        <p>Contact the seller to confirm they received your return. Check your bank or PayPal account for the refund. If you don't see it after 10 days, open a case in the Resolution Center.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-section">
+    <h3>💡 Return Tips</h3>
+    <ul>
+      <li><strong>Read the return policy:</strong> Every seller has different terms. Always check before purchasing.</li>
+      <li><strong>Act quickly:</strong> Start the return process as soon as you realize you want to return an item.</li>
+      <li><strong>Keep proof:</strong> Save tracking numbers, receipts, and photos of the item's condition.</li>
+      <li><strong>Pack securely:</strong> Use proper packaging materials to prevent damage during return shipping.</li>
+      <li><strong>Document everything:</strong> Take photos of the item before shipping it back for your records.</li>
+      <li><strong>Use tracking:</strong> Always ship returns with a tracking number for proof of delivery.</li>
+      <li><strong>Communicate:</strong> Keep in contact with the seller throughout the return process.</li>
+    </ul>
+  </div>
+
+  <div class="help-section">
+    <h2>Start a Return</h2>
+    <p>Need to return an item? Visit your purchase history:</p>
+    <a href=\"/purchase-history.html\" class="cta-button">Go to Purchase History</a>
+  </div>
+
+  <div class="help-section">
+    <h2>Need More Help?</h2>
+    <p>Contact our support team for assistance with your return:</p>
+    <a href=\"/contact-us.html\" class="cta-button">Contact Support</a>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-top">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h4>Buy</h4>
+        <ul>
+          <li><a href=\"/home.html\">Browse Products</a></li>
+          <li><a href="/deals.html">Deals</a></li>
+          <li><a href=\"/gift-cards.html\">Gift Cards</a></li>
+          <li><a href="/brand-outlet.html">Category Directory</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Sell</h4>
+        <ul>
+          <li><a href=\"/sell.html\">Start Selling</a></li>
+          <li><a href=\"/selling-help.html\">Seller Center</a></li>
+          <li><a href=\"/fees-billing-help.html\">Fees & Policies</a></li>
+          <li><a href=\"/selling-help.html\">Sell Tools</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>About</h4>
+        <ul>
+          <li><a href=\"/home.html\">About De-King</a></li>
+          <li><a href=\"/home.html\">Careers</a></li>
+          <li><a href=\"/home.html\">Press</a></li>
+          <li><a href=\"/home.html\">Corporate Responsibility</a></li>
+        </ul>
+      </div>
+      <div class="footer-column newsletter">
+        <h4>Stay in the loop</h4>
+        <p class="muted">Subscribe for deals, new arrivals and updates.</p>
+        <form class="newsletter-form" action="#" method="post" onsubmit="return false;">
+          <label for="newsletter-email" class="visually-hidden">Email address</label>
+          <input id="newsletter-email" type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(element) {
+  element.classList.toggle('active');
+}
+</script>
+</body>
+</html>

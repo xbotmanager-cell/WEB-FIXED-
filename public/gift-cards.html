@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift Cards</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+      .nav-action-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        border: 1px solid #b397fc;
+        background: rgba(179, 151, 252, 0.1);
+        color: #5f3dc4;
+        cursor: pointer;
+        font: inherit;
+        border-radius: 24px;
+        padding: 10px 14px;
+        transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+      }
+      .nav-action-button:hover,
+      .nav-action-button:focus {
+        background: rgba(179, 151, 252, 0.18);
+        outline: none;
+        transform: translateY(-1px);
+      }
+      .cards-nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .cards-nav-wrapper {
+        display: block;
+        width: 100%;
+        padding: 0;
+        margin-top: 0;
+      }
+      .cards-nav {
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        background: #fff;
+        border-radius: 0;
+        padding: 1.25rem 1rem;
+        box-shadow: none;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+      }
+      .cards-nav h1 {
+        margin: 0;
+        font-size: 1.1rem;
+        white-space: nowrap;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #3f2b77;
+      }
+      .cards-nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        gap: 0.75rem;
+      }
+      .cards-nav li {
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        width: auto;
+      }
+      .cards-nav a,
+      .cards-nav button.nav-action-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0.85rem 1.2rem;
+        border-radius: 999px;
+        text-decoration: none;
+        color: #5f3dc4;
+        transition: background 0.2s ease, transform 0.2s ease;
+      }
+      .cards-nav button.nav-action-button {
+        border: 1px solid #b397fc;
+        background: rgba(179, 151, 252, 0.1);
+      }
+      .cards-nav button.nav-action-button:hover,
+      .cards-nav button.nav-action-button:focus,
+      .cards-nav a:hover {
+        background: rgba(179, 151, 252, 0.18);
+        transform: translateY(-1px);
+      }
+      .physical-cards-items {
+        justify-content: center;
+        width: 100%;
+      }
+      .physical-cards-list-item {
+        width: 100%;
+      }
+      .physical-cards-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: grid;
+        gap: 0.5rem;
+        width: 100%;
+      }
+      .physical-cards-list.hidden {
+        display: none;
+      }
+      .physical-cards-list li {
+        text-align: center;
+      }
+      .physical-cards-list li a {
+        width: 100%;
+        display: inline-flex;
+        justify-content: center;
+        padding: 0.8rem 1rem;
+        border-radius: 999px;
+        border: 1px solid rgba(179, 151, 252, 0.25);
+        background: rgba(179, 151, 252, 0.05);
+      }
+
+      .banner-slide {
+        display: flex;
+        justify-content: center;
+        padding: 1.5rem 1rem 2rem;
+        background: #f9f9f9;
+      }
+      .banner-content {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        overflow: hidden;
+        border-radius: 24px;
+        box-shadow: 0 24px 60px rgba(45, 32, 97, 0.12);
+      }
+      .banner-image {
+        width: 100%;
+        height: 400px;
+        display: block;
+        object-fit: cover;
+      }
+      .banner-text {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2rem;
+        color: #ffffff;
+        background: linear-gradient(180deg, rgba(15, 23, 66, 0.08) 0%, rgba(15, 23, 66, 0.62) 100%);
+        text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+      }
+      .banner-text h2 {
+        margin: 0 0 1rem;
+        font-size: clamp(2rem, 3.5vw, 3.5rem);
+        line-height: 1.05;
+        max-width: 12ch;
+      }
+      .banner-text p {
+        margin: 0 0 1.5rem;
+        max-width: 40rem;
+        font-size: 1rem;
+        line-height: 1.75;
+      }
+      .banner-button {
+        display: inline-block;
+        max-width: fit-content;
+        padding: 0.95rem 1.8rem;
+        border-radius: 999px;
+        background: #7c49ff;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+      .banner-button:hover,
+      .banner-button:focus {
+        background: #6230d3;
+        transform: translateY(-1px);
+      }
+      .banner-slide2 {
+        display: flex;
+        justify-content: center;
+        padding: 1.5rem 1rem 2rem;
+        background: #f9f9f9;
+      }
+      .banner-content2 {
+        position: relative;
+        width: 100%;
+        max-width: 1200px;
+        overflow: hidden;
+        border-radius: 24px;
+        box-shadow: 0 24px 60px rgba(45, 32, 97, 0.12);
+        min-height: 5px;
+      }
+      .banner-content2 img {
+        width: 100%;
+        height: 400px;
+        display: block;
+        object-fit: cover;
+        filter: saturate(1.08) contrast(1.05);
+      }
+      .banner-text2 {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 2.5rem;
+        color: #ffffff;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.18) 0%, rgba(0, 0, 0, 0.62) 100%);
+        text-shadow: 0 3px 24px rgba(0, 0, 0, 0.35);
+      }
+      .banner-text2 h2 {
+        margin: 0 0 1rem;
+        font-size: clamp(2rem, 3vw, 3rem);
+        line-height: 1.05;
+        max-width: 11ch;
+      }
+      .banner-text2 p {
+        margin: 0 0 1.5rem;
+        max-width: 38rem;
+        font-size: 1rem;
+        line-height: 1.7;
+        color: rgba(255, 255, 255, 0.92);
+      }
+      .banner-text2 .banner-button {
+        background: #ffffff;
+        color: #2a1f5f;
+        box-shadow: 0 16px 32px rgba(15, 23, 66, 0.15);
+      }
+      .banner-text2 .banner-button:hover,
+      .banner-text2 .banner-button:focus {
+        background: #f8f8ff;
+        color: #2a1f5f;
+      }
+      @media (max-width: 800px) {
+        .banner-text {
+          padding: 1.5rem;
+          background: linear-gradient(180deg, rgba(15, 23, 66, 0.15) 0%, rgba(15, 23, 66, 0.72) 100%);
+        }
+        .banner-text h2 {
+          font-size: clamp(1.75rem, 5vw, 2.4rem);
+        }
+        .banner-text p {
+          font-size: 0.95rem;
+        }
+        .banner-text2 {
+          padding: 1.5rem;
+        }
+        .banner-text2 h2 {
+          font-size: clamp(1.75rem, 5vw, 2.4rem);
+        }
+        .banner-text2 p {
+          font-size: 0.95rem;
+        }
+      }
+      .faq {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto 2rem;
+        padding: 0 1rem;
+      }
+      .faq h2 {
+        margin: 0 0 1rem;
+        font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+        color: #2a1f5f;
+      }
+      .faq_intro {
+        margin: 0 0 2rem;
+        color: #56546b;
+        line-height: 1.75;
+        max-width: 58rem;
+      }
+      .faq_list {
+        display: grid;
+        gap: 1rem;
+      }
+      .faq_item {
+        background: #ffffff;
+        border: 1px solid rgba(99, 48, 211, 0.12);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 16px 32px rgba(38, 28, 89, 0.04);
+      }
+      .faq_item summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 1.3rem 1.5rem;
+        font-size: 1rem;
+        font-weight: 700;
+        color: #1f2450;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .faq_item summary::-webkit-details-marker {
+        display: none;
+      }
+      .faq_item summary::after {
+        content: '+';
+        font-size: 1.25rem;
+        color: #7c49ff;
+        transition: transform 0.2s ease;
+      }
+      .faq_item[open] summary::after {
+        content: '−';
+        transform: rotate(0deg);
+      }
+      .faq_answer {
+        padding: 0 1.5rem 1.5rem;
+        color: #5f5d78;
+        line-height: 1.8;
+        font-size: 0.98rem;
+      }
+      .faq_answer p {
+        margin: 0;
+      }
+
+      .grid {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem 2rem;
+      }
+      .text-cols_grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1.5rem;
+      }
+      .text-col {
+        background: #f9f9f9;
+        border-radius: 18px;
+        padding: 1.5rem;
+        /*box-shadow: 0 18px 45px rgba(58, 41, 122, 0.08);*/
+      }
+      .text-col_title {
+        margin: 0 0 0.75rem;
+        font-size: 1.5rem;
+        line-height: 1.2;
+        color: #3f2b77;
+      }
+      .text-col_text {
+        margin: 0;
+        line-height: 1.75;
+        color: #434343;
+      }
+
+      .carousel_grid {
+        width: 100%;
+        max-width: 1502px;
+        margin: 0 auto 2rem;
+        padding: 0 1rem;
+      }
+      .carousel_header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        flex-wrap: wrap;
+      }
+      .carousel_title {
+        margin: 0;
+        font-size: clamp(1.5rem, 2vw, 2rem);
+        color: #2a1f5f;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      .carousel_nav {
+        display: flex;
+        gap: 0.75rem;
+      }
+      .carousel_nav-button {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        border: 1px solid rgba(99, 48, 211, 0.18);
+        background: #ffffff;
+        color: #3f2b77;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: transform 0.2s ease, background 0.2s ease;
+      }
+      .carousel_nav-button:hover,
+      .carousel_nav-button:focus {
+        background: rgba(124, 73, 255, 0.1);
+        transform: translateY(-1px);
+        outline: none;
+      }
+      .carousel_items {
+        display: flex;
+        gap: 1rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+        padding-bottom: 0.5rem;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+      }
+      .carousel_items::-webkit-scrollbar {
+        height: 10px;
+      }
+      .carousel_items::-webkit-scrollbar-track {
+        background: transparent;
+      }
+      .carousel_items::-webkit-scrollbar-thumb {
+        background: rgba(99, 48, 211, 0.25);
+        border-radius: 999px;
+      }
+      .item-card {
+        flex: 0 0 280px;
+        min-width: 280px;
+        background: #ffffff;
+        border-radius: 24px;
+        overflow: hidden;
+        border: 1px solid #edf0ff;
+        scroll-snap-align: start;
+        box-shadow: 0 18px 40px rgba(38, 28, 89, 0.08);
+      }
+      .item-card_link {
+        display: block;
+        color: inherit;
+        text-decoration: none;
+        height: 100%;
+      }
+      .item-card_figure {
+        margin: 0;
+      }
+      .item-card_figure img {
+        width: 100%;
+        height: 220px;
+        display: block;
+        object-fit: cover;
+      }
+      .item-card header {
+        padding: 1rem;
+      }
+      .item-card h3 {
+        margin: 0;
+        font-size: 1.1rem;
+        color: #2a1f5f;
+      }
+      @media (max-width: 960px) {
+        .item-card {
+          flex: 0 0 240px;
+          min-width: 240px;
+        }
+      }
+      @media (max-width: 640px) {
+        .carousel_header {
+          align-items: flex-start;
+        }
+        .carousel_nav {
+          width: 100%;
+          justify-content: center;
+        }
+        .item-card {
+          flex: 0 0 88vw;
+          min-width: 88vw;
+        }
+      }
+      .titles {
+        padding: 2rem 0 3rem;
+        background: #f7f6ff;
+      }
+      .titles_header {
+        max-width: 1200px;
+        margin: 0 auto 1.5rem;
+        padding: 0 1rem;
+      }
+      .titles_title {
+        margin: 0;
+        font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+        color: #2a1f5f;
+        line-height: 1.1;
+      }
+      .titles_items {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 1rem;
+      }
+      .title {
+        
+        position: relative;
+        border-radius: 24px;
+        overflow: hidden;
+        min-height: 320px;
+      }
+      .title_wrap {
+        position: relative;
+        height: 100%;
+      }
+      .title_figure {
+        margin: 0;
+        height: 100%;
+      }
+      .title_figure img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        transition: transform 0.35s ease;
+      }
+      .title:hover .title_figure img,
+      .title:focus-within .title_figure img {
+        transform: scale(1.03);
+      }
+      .title_header {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        padding: 1.5rem;
+        background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.55) 100%);
+        color: #ffffff;
+      }
+      .title_header h4 {
+        margin: 0 0 0.65rem;
+        font-size: 1.35rem;
+        line-height: 1.2;
+      }
+      .title_header p {
+        margin: 0;
+        line-height: 1.7;
+        opacity: 0.95;
+      }
+      @media (max-width: 980px) {
+        .text-cols_grid {
+          grid-template-columns: 1fr;
+        }
+        .titles_items {
+          grid-template-columns: 1fr;
+        }
+      }
+      .redeeming-section {
+        display: flex;
+        justify-content: center;
+        padding-top: 1rem;
+      }
+      .redeeming-copy {
+        max-width: 720px;
+        text-align: center;
+      }
+      .redeeming-copy h2 {
+        margin: 0;
+        font-size: clamp(2rem, 3vw, 2.6rem);
+        color: #2a1f5f;
+      }
+      .redeeming-copy p {
+        margin: 0.85rem auto 0;
+        color: #4f4a70;
+        font-size: 1rem;
+        max-width: 44rem;
+      }
+      .redeeming-link {
+        color: #7c49ff;
+        text-decoration: none;
+        font-weight: 600;
+      }
+      .redeeming-link:hover,
+      .redeeming-link:focus {
+        text-decoration: underline;
+      }
+      .feature-cards_items {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 0;
+        margin-top: 1.5rem;
+      }
+      .feature-card {
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 1.75rem;
+        border: 1px solid rgba(99, 48, 211, 0.08);
+        box-shadow: 0 18px 40px rgba(38, 28, 89, 0.06);
+      }
+      .feature-cards_items .feature-card:first-child {
+        border-right: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+      }
+      .feature-cards_items .feature-card:last-child {
+        border-left: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+      }
+      .feature-card_header {
+        max-width: 520px;
+      }
+      .feature-card_title {
+        margin: 0 0 1.5rem;
+        font-size: clamp(1.8rem, 2.3vw, 2.5rem);
+        line-height: 1.05;
+        color: #1d1847;
+      }
+      .feature-card_list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 1rem;
+      }
+      .feature-card_list-item {
+        display: flex;
+        gap: 1rem;
+        align-items: flex-start;
+      }
+      .feature-card_list-item_num {
+        width: 40px;
+        min-width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: #7c49ff;
+        color: #ffffff;
+        display: grid;
+        place-items: center;
+        font-weight: 700;
+      }
+      .feature-card_list-item_content {
+        flex: 1;
+      }
+      .feature-card_list-item_title {
+        margin: 0 0 0.35rem;
+        font-size: 1.05rem;
+        color: #1f2450;
+      }
+      .feature-card_list-item_text {
+        margin: 0;
+        color: #5f5d78;
+        line-height: 1.75;
+        font-size: 0.97rem;
+      }
+      .feature-card_media {
+        display: flex;
+        justify-content: center;
+      }
+      .feature-card_screen {
+        width: 100%;
+        max-width: 360px;
+        padding: 1.25rem;
+        border-radius: 32px;
+        background: linear-gradient(180deg, #f7f8ff 0%, #ffffff 100%);
+        box-shadow: 0 24px 70px rgba(29, 24, 72, 0.08);
+        position: relative;
+      }
+      .feature-card_screen::before {
+        content: "";
+        position: absolute;
+        top: 1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 72px;
+        height: 5px;
+        border-radius: 999px;
+        background: rgba(15, 23, 66, 0.08);
+      }
+      .feature-card_screen_inner {
+        background: #ffffff;
+        border-radius: 24px;
+        padding: 1rem;
+      }
+      .feature-card_screen_header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+      .feature-card_screen_caption {
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: #262f57;
+        font-weight: 700;
+      }
+      .feature-card_screen_close {
+        width: 28px;
+        height: 28px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(15, 23, 66, 0.06);
+        color: #22284a;
+        border: none;
+        font-size: 0.95rem;
+        cursor: default;
+      }
+      .feature-card_screen_title {
+        margin: 0 0 0.25rem;
+        font-size: 1.1rem;
+        color: #101432;
+      }
+      .feature-card_screen_subtitle {
+        margin: 0 0 1rem;
+        color: #4f5372;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      .feature-card_screen_total {
+        margin: 0;
+        color: #101432;
+        font-size: 1rem;
+        font-weight: 700;
+      }
+      .feature-card_screen_items {
+        margin-top: 1rem;
+        display: grid;
+        gap: 0.85rem;
+      }
+      .screen-item {
+        display: flex;
+        gap: 0.85rem;
+        align-items: center;
+        padding: 0.9rem;
+        border-radius: 20px;
+        background: #f8f8ff;
+      }
+      .screen-item img {
+        width: 56px;
+        height: 56px;
+        border-radius: 16px;
+        object-fit: cover;
+      }
+      .screen-item_text {
+        display: grid;
+        gap: 0.15rem;
+      }
+      .screen-item_text strong {
+        display: block;
+        font-size: 0.95rem;
+        color: #1f2450;
+      }
+      .screen-item_text span {
+        font-size: 0.82rem;
+        color: #6b6e8a;
+      }
+      @media (max-width: 980px) {
+        .feature-cards_items {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+</head>
+<body>
+  <header>
+  <div class="top-bar">
+    <div class="top-bar-start">
+      <span>Hi! <a href=\"/login.html\">Login</a> or <a href=\"/register.html\">Register</a></span>
+      <nav class="top-links">
+        <a href="/deals.html">Deals</a>
+        <a href=\"/brand-outlet.html\">Brand outlet</a>
+        <a href=\"/gift-cards.html\">Gift Cards</a>
+        <a href=\"/contact.html\">Help & Contact</a>
+      </nav>
+    </div>
+    <div class="top-bar-end">
+      <a href=\"/ship-to.html\">Ship to</a>
+      <a href=\"/sell.html\">Sell</a>
+        <select name="watchlist">
+        <option>Watchlist</option>
+        <option>""</option>
+        <option>""</option>
+        <option>""</option>
+        <option>Watchlist</option>
+      </select>
+      <select name="my-kings">
+        <option>My kings</option>
+        <option>""</option>
+        <option>""</option>
+        <option>""</option>
+      </select>
+      <a href=\"/cart.html\">Cart</a>
+    </div>
+  </div>
+  <div class="main-header">
+    <a class="logo" href=\"/home.html\">
+      <img src="/assets/images/de-king-logo.svg" alt="De-King Logo">
+    </a>
+    
+    <form class="search-form" action="#" method="get">
+      <select name="category">
+        <option>All categories</option>
+        <option>Laptops</option>
+        <option>Smartphones</option>
+        <option>Tablets</option>
+      </select>
+      <input type="text" name="q" placeholder="Search for anything">
+      <button type="submit">Search</button>
+    </form>
+    <div class="header-actions">
+      <button type="button" class="icon-btn notify-btn" title="Allow notifications">
+        <span class="icon">🔔</span>
+        <span class="label">Enable notifications</span>
+      </button>
+      <a href=\"/cart.html\" class="icon-btn cart-btn" title="View cart">
+        <span class="icon">🛒</span>
+        <span class="label">Cart</span>
+        <span class="badge">3</span>
+      </a>
+    </div>
+  </div><hr class="dropdown-divider">
+
+<div class="cards-nav-wrapper">
+  <nav class="cards-nav">
+    <h1>king Gift Cards</h1>
+    <ul>
+      <li class="physical-cards-items">
+        <button class="nav-action-button" type="button" id="physicalCardToggle" aria-expanded="false" aria-controls="physical-card-list">
+          <span>physical card</span>
+          <i class="fa-solid fa-angle-down" aria-hidden="true"></i>
+        </button>
+      </li>
+      <li class="physical-cards-list-item">
+        <ul id="physical-card-list" class="physical-cards-list hidden" role="menu" aria-label="Physical card options">
+          <li><a href=\"/buy-now.html\">buy now</a></li>
+          <li><a href=\"/buy-from-nearest-retailer.html\">buy from nearest retailer</a></li>
+        </ul>
+      </li>
+      <li><a class="nav-link" href="#king-cards">king cards</a></li>
+      <li><a class="nav-link" href="#cards-in-bulk">cards in bulk</a></li>
+      <li><a class="nav-link" href="#how-it-works">how it works</a></li>
+      <li><a class="nav-link" href="#faq">faq</a></li>
+      <li><button class="nav-action-button">add gift card</button></li>
+    </ul>
+  </nav>
+</div></header><hr class="dropdown-divider"><br><br><br><br><br>
+  
+<div class="banner-slide">
+  <div class="banner-content">
+  <img src="/assets/images/delivery.jpg" alt="Gift Card Banner" class="banner-image">
+  <div class="banner-text">
+    <h2>Discover Gift with king Gift Cards</h2>
+    <p>Give the gift of choice with king Gift Cards - the ideal present for any occasion. Whether it's a birthday,</p>
+    <a href=\"/buy-now.html\" class="banner-button">Start gifting</a>
+</div>
+</div>
+</div>
+<br>
+<div class="grid">
+  <div class="text-cols_grid">
+    <article class="text-col">
+      <h3 class="text-col_title">Hassle-free</h3>
+        <p class="text-col_text">king Gift Cards are the perfect solution for last-minute gifts or when you're unsure of what to buy.</p>
+    </article>
+    <article class="text-col">
+       <h3 class="text-col_title">Heartwarming designs</h3>
+        <p class="text-col_text">Our gift cards feature heartwarming designs that are sure to bring a smile to your loved ones' faces.</p>
+    </article>
+     <article class="text-col">
+         <h3 class="text-col_title">The choice is theirs</h3>
+        <p class="text-col_text">With king Gift Cards, the choice is theirs. Your loved ones can explore our extensive selection of products and brands.</p>
+     </article>
+</div>
+</div>
+<div class="carousel_grid">
+<div class="carousel_header">
+  <h2 class="carousel_title">
+    <span>celebrate upcoming events</span>
+  </h2>
+<nav class="carousel_nav" aria-label="carousel navigation">
+  <button class="carousel_nav-button" aria-label="Previous slide">
+    <i class="fa-solid fa-angle-left" aria-hidden="true"></i>
+  </button>
+  <button class="carousel_nav-button" aria-label="Next slide">
+    <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
+  </button>
+  </nav>
+</div>
+<div class="carousel_items" aria-roledescription="carousel" role="group">
+  <article class="item-card is-categories" >
+    <a id="valentines-day" class="item-card_link" tabindex="0" role="button" >
+      <figure class="item-card_figure">
+    <img src="/assets/images/ttt6.jpg" alt="Valentine's Day Gift Card">
+  </figure>
+
+    <h3>Valentine's Day</h3>
+  
+  </a>
+  </article>
+   <article class="item-card is-categories" >
+    <a id="valentines-day" class="item-card_link" tabindex="0" role="button" >
+      <figure class="item-card_figure">
+    <img src="/assets/images/ttt6.jpg" alt="Valentine's Day Gift Card">
+  </figure>
+
+    <h3>Valentine's Day</h3>
+  
+  </a>
+  </article> <article class="item-card is-categories" >
+    <a id="valentines-day" class="item-card_link" tabindex="0" role="button" >
+      <figure class="item-card_figure">
+    <img src="/assets/images/ttt6.jpg" alt="Valentine's Day Gift Card">
+  </figure>
+
+    <h3>Valentine's Day</h3>
+  
+  </a>
+  </article> <article class="item-card is-categories" >
+    <a id="valentines-day" class="item-card_link" tabindex="0" role="button" >
+      <figure class="item-card_figure">
+    <img src="/assets/images/ttt6.jpg" alt="Valentine's Day Gift Card">
+  </figure>
+
+    <h3>Valentine's Day</h3>
+  
+  </a>
+  </article> <article class="item-card is-categories" >
+    <a id="valentines-day" class="item-card_link" tabindex="0" role="button" >
+      <figure class="item-card_figure">
+    <img src="/assets/images/ttt6.jpg" alt="Valentine's Day Gift Card">
+  </figure>
+
+    <h3>Valentine's Day</h3>
+  
+  </a>
+  </article> <article class="item-card is-categories" >
+    <a id="valentines-day" class="item-card_link" tabindex="0" role="button" >
+      <figure class="item-card_figure">
+    <img src="/assets/images/ttt6.jpg" alt="Valentine's Day Gift Card">
+  </figure>
+
+    <h3>Valentine's Day</h3>
+  
+  </a>
+  </article> <article class="item-card is-categories" >
+    <a id="valentines-day" class="item-card_link" tabindex="0" role="button" >
+      <figure class="item-card_figure">
+    <img src="/assets/images/ttt6.jpg" alt="Valentine's Day Gift Card">
+  </figure>
+    <h3>Valentine's Day</h3>
+  </a>
+  </article>
+</div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const toggle = document.getElementById('physicalCardToggle');
+    const list = document.getElementById('physical-card-list');
+    if (!toggle || !list) return;
+
+    toggle.addEventListener('click', () => {
+      const isOpen = list.classList.toggle('hidden') === false;
+      toggle.setAttribute('aria-expanded', String(isOpen));
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!toggle.contains(event.target) && !list.contains(event.target)) {
+        list.classList.add('hidden');
+        toggle.setAttribute('aria-expanded', 'false');
+      }
+    });
+
+    const carousel = document.querySelector('.carousel_items');
+    const prevButton = document.querySelector('.carousel_nav-button[aria-label="Previous slide"]');
+    const nextButton = document.querySelector('.carousel_nav-button[aria-label="Next slide"]');
+    if (carousel && prevButton && nextButton) {
+      const slideDistance = 300;
+
+      prevButton.addEventListener('click', () => {
+        carousel.scrollBy({ left: -slideDistance, behavior: 'smooth' });
+      });
+
+      nextButton.addEventListener('click', () => {
+        carousel.scrollBy({ left: slideDistance, behavior: 'smooth' });
+      });
+
+      carousel.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') {
+          nextButton.click();
+        }
+        if (event.key === 'ArrowLeft') {
+          prevButton.click();
+        }
+      });
+    }
+  });
+</script><br><br><br><br><br><br>
+<section class="titles">
+<div class="grid">
+
+  <h2 class="titles_title" id="king-cards">king cards for all kinds of gift-giving</h2><br><br>
+   
+<div class="titles_items">
+  <article class="title">
+    <div class="title_wrap">
+      <figure class="title_figure">
+        <img src="/assets/images/fashion.jpg" alt="King Card">
+      </figure>
+      
+      <div class="title_header">
+        <h4>Delight with wide, one of a kind selection</h4>
+        <p>from authenticated fashion and luxury items, to expertly checked electronics we've got it all</p>
+      </div>
+    </div>
+  </article>
+ <article class="title">
+    <div class="title_wrap">
+      <figure class="title_figure">
+        <img src="/assets/images/gift-cards.jpg" alt="King Card">
+      </figure>
+      
+      <div class="title_header">
+        <h4>Your Ultimate Gift Card Destination</h4>
+        <p>Find the perfect gift for every occasion with our wide selection of gift cards.</p>
+      </div>
+    </div>
+  </article>
+  </div></div>
+<div class="grid">
+  <div class="grid redeeming-section">
+    <div class="redeeming-copy">
+      <h2>Redeeming is easy</h2>
+      <p>
+        Plus, you can <a href="#" class="redeeming-link">add your gift card to your account here</a>.
+      </p>
+    </div>
+  </div>
+  <div class="feature-cards_items">
+    <article class="feature-card">
+      <div class="feature-card_header">
+        <h3 class="feature-card_title">How it works</h3>
+        <ul class="feature-card_list">
+          <li class="feature-card_list-item">
+            <div class="feature-card_list-item_num">1</div>
+            <div class="feature-card_list-item_content">
+              <h4 class="feature-card_list-item_title">Find your item</h4>
+              <p class="feature-card_list-item_text">Your gift card can only be redeemed at our online store.</p>
+            </div>
+          </li>
+          <li class="feature-card_list-item">
+            <div class="feature-card_list-item_num">2</div>
+            <div class="feature-card_list-item_content">
+              <h4 class="feature-card_list-item_title">Enter the code</h4>
+              <p class="feature-card_list-item_text">At checkout, enter the redemption code in the gift cards and coupons section.</p>
+            </div>
+          </li>
+          <li class="feature-card_list-item">
+            <div class="feature-card_list-item_num">3</div>
+            <div class="feature-card_list-item_content">
+              <h4 class="feature-card_list-item_title">Confirm and pay</h4>
+              <p class="feature-card_list-item_text">Confirm your payment and enjoy your purchase.</p>
+            </div>
+          </li>
+        </ul>
+</div>
+    </article>
+    <article class="feature-card feature-card_media">
+      <div class="feature-card_screen">
+        <div class="feature-card_screen_inner">
+          <div class="feature-card_screen_header">
+            <span class="feature-card_screen_caption">Checkout Success</span>
+            <button class="feature-card_screen_close" aria-label="Close">×</button>
+          </div>
+          <h4 class="feature-card_screen_title">Thanks for shopping with us!</h4>
+          <p class="feature-card_screen_subtitle">You should get your order by Aug 31. When your order is done processing, we’ll email info to your address.</p>
+          <p class="feature-card_screen_total">Order total: $0.00</p>
+          <div class="feature-card_screen_items">
+            <div class="screen-item">
+              <img src="/assets/images/IMG-20261114-WA0144.jpg" alt="Headphones">
+              <div class="screen-item_text">
+                <strong>$213.99</strong>
+                <span>Sponsored</span>
+              </div>
+            </div>
+            <div class="screen-item">
+              <img src="/assets/images/IMG-20261114-WA0144.jpg" alt="Red headphones">
+              <div class="screen-item_text">
+                <strong>$79.50</strong>
+                <span>Sponsored</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+</section>
+<div class="banner-slide2">
+  <div class="banner-content2">
+  <img src="/assets/images/group.jpg" alt="Gift Card Banner" class="banner-image">
+  <div class="banner-text2">
+    <h2>Buy king Gift cards in bulk</h2>
+    <p>celebrate success, reward your team, or show your appreciation with our bulk gift card options.</p>
+    <a href=\"/buy-now.html\" class="banner-button">shop now</a>
+</div>
+</div>
+</div>
+<section id="faq" class="faq">
+  <h2>Frequently Asked Questions</h2>
+  <p class="faq_intro">Everything you need to know about buying, redeeming, and using king Gift Cards. Expand any question to view the answer.</p>
+  <div class="faq_list">
+    <details class="faq_item">
+      <summary>What can gift cards be used for?</summary>
+      <div class="faq_answer">
+        <p>king Gift Cards can be used to shop almost anything on our website. They are not valid for third-party gift cards, cash withdrawals, or items restricted by merchant policy.</p>
+      </div>
+    </details>
+    <details class="faq_item">
+      <summary>Do I need an account to use a gift card?</summary>
+      <div class="faq_answer">
+        <p>Yes, you need an active account and a shipping address to redeem a gift card at checkout. You can create an account at any time if you don't already have one.</p>
+      </div>
+    </details>
+    <details class="faq_item">
+      <summary>Does my gift card expire?</summary>
+      <div class="faq_answer">
+        <p>Most king Gift Cards do not expire and do not carry additional fees. Check the card terms for exceptions or promotional offers.</p>
+      </div>
+    </details>
+    <details class="faq_item">
+      <summary>What happens if my order is less than the gift card amount?</summary>
+      <div class="faq_answer">
+        <p>Any remaining balance will stay on your account and can be used on future purchases. Select the gift card at checkout to apply the remaining balance.</p>
+      </div>
+    </details>
+    <details class="faq_item">
+      <summary>Where can I get help if I have trouble redeeming my gift card?</summary>
+      <div class="faq_answer">
+        <p>If you experience trouble redeeming your gift card, contact our support team or review our help pages for step-by-step guidance.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-top">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h4>Buy</h4>
+        <ul>
+          <li><a href="#">Browse Products</a></li>
+          <li><a href="#">Deals</a></li>
+          <li><a href="#">Gift Cards</a></li>
+          <li><a href="#">Category Directory</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Sell</h4>
+        <ul>
+          <li><a href="#">Start Selling</a></li>
+          <li><a href="#">Seller Center</a></li>
+          <li><a href="#">Fees & Policies</a></li>
+          <li><a href="#">Sell Tools</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>About</h4>
+        <ul>
+          <li><a href="#">About De-King</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
+          <li><a href="#">Corporate Responsibility</a></li>
+        </ul>
+      </div>
+      <div class="footer-column newsletter">
+        <h4>Stay in the loop</h4>
+        <p class="muted">Subscribe for deals, new arrivals and updates.</p>
+        <form class="newsletter-form" action="#" method="post" onsubmit="return false;">
+          <label for="newsletter-email" class="visually-hidden">Email address</label>
+          <input id="newsletter-email" type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

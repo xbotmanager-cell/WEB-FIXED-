@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sell</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .selling-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .selling-nav {
+      display: flex;
+      gap: 30px;
+      border-bottom: 2px solid #e5e5e5;
+      margin-bottom: 40px;
+      padding-bottom: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .selling-nav a {
+      color: #666;
+      text-decoration: none;
+      font-weight: 500;
+      padding-bottom: 5px;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .selling-nav a:hover {
+      color: #0064d2;
+      border-bottom-color: #0064d2;
+      transform: translateY(-2px);
+    }
+
+    .selling-nav a.active {
+      color: #0064d2;
+      border-bottom-color: #0064d2;
+      font-weight: 600;
+    }
+
+    .selling-nav a::before {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #0064d2, transparent);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .selling-nav a:hover::before {
+      width: 100%;
+    }
+
+    .list-item-btn {
+      background: #0064d2;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-block;
+      transition: background 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .list-item-btn:hover {
+      background: #004fb8;
+    }
+
+    .hero-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      margin-bottom: 60px;
+      background: #f8fafc;
+      padding: 40px;
+      border-radius: 12px;
+    }
+
+    .hero-content h2 {
+      font-size: 2.5rem;
+      margin: 0 0 20px;
+      color: #111;
+      line-height: 1.2;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #536077;
+      margin-bottom: 30px;
+    }
+
+    .hero-images {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+    }
+
+    .hero-image {
+      border-radius: 12px;
+      overflow: hidden;
+      height: 200px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .benefits-section {
+      text-align: center;
+      margin-bottom: 60px;
+    }
+
+    .benefits-section h2 {
+      font-size: 2rem;
+      margin-bottom: 50px;
+      color: #111;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .benefit-card {
+      padding: 30px;
+      background: #fff;
+      border-radius: 12px;
+      border: 1px solid #e5e5e5;
+      transition: all 0.3s ease;
+    }
+
+    .benefit-card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      border-color: #0064d2;
+    }
+
+    .benefit-card h3 {
+      font-size: 1.3rem;
+      margin: 0 0 15px;
+      color: #111;
+    }
+
+    .benefit-card p {
+      color: #536077;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .benefit-card a {
+      display: inline-block;
+      color: #0064d2;
+      text-decoration: none;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .benefit-card a:hover {
+      text-decoration: underline;
+    }
+
+    .step-section {
+      background: #eff6ff;
+      padding: 40px;
+      border-radius: 12px;
+      margin-bottom: 60px;
+    }
+
+    .step-section h2 {
+      text-align: center;
+      font-size: 2rem;
+      margin-bottom: 40px;
+      color: #111;
+    }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .step-card {
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .step-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 50px;
+      height: 50px;
+      background: #0064d2;
+      color: white;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+
+    .step-card h3 {
+      font-size: 1.1rem;
+      margin: 0 0 10px;
+      color: #111;
+    }
+
+    .step-card p {
+      color: #536077;
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #0064d2 0%, #004fb8 100%);
+      border-radius: 12px;
+      color: white;
+      margin-bottom: 60px;
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      margin-top: 0;
+    }
+
+    .cta-section p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+      opacity: 0.95;
+    }
+
+    .cta-button {
+      background: white;
+      color: #0064d2;
+      padding: 14px 40px;
+      border-radius: 999px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-block;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+
+    .listing-start-section {
+      background: white;
+      padding: 50px 20px;
+      text-align: center;
+      margin-bottom: 60px;
+      border-radius: 12px;
+    }
+
+    .listing-start-section h2 {
+      font-size: 2rem;
+      margin-bottom: 30px;
+      color: #111;
+    }
+
+    .listing-search {
+      display: flex;
+      gap: 10px;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      justify-content: center;
+    }
+
+    .listing-search input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 2px solid #e5e5e5;
+      border-radius: 6px;
+      font-size: 1rem;
+      transition: border-color 0.3s ease;
+    }
+
+    .listing-search input:focus {
+      outline: none;
+      border-color: #0064d2;
+    }
+
+    .listing-search button {
+      padding: 12px 30px;
+      background: #0064d2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .listing-search button:hover {
+      background: #004fb8;
+    }
+
+    .steps-visualization {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .step-visual {
+      padding: 25px;
+      background: #f8fafc;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    .step-visual-icon {
+      width: 100px;
+      height: 100px;
+      margin: 0 auto 15px;
+      background: #eff6ff;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.5rem;
+    }
+
+    .step-visual h4 {
+      font-size: 1rem;
+      margin: 0 0 10px;
+      color: #111;
+      font-weight: 600;
+    }
+
+    .step-visual p {
+      font-size: 0.9rem;
+      color: #536077;
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+      max-width: 1000px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+      transform: translateY(-4px);
+    }
+
+    .product-image {
+      width: 100%;
+      height: 180px;
+      background: #f0f0f0;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 15px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-info h4 {
+      margin: 0 0 8px;
+      font-size: 0.95rem;
+      color: #111;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .product-info p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: #536077;
+      flex: 1;
+    }
+
+    .product-action {
+      display: inline-block;
+      background: #0064d2;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-top: 10px;
+      text-align: center;
+      transition: background 0.3s ease;
+    }
+
+    .product-action:hover {
+      background: #004fb8;
+    }
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    .feature-item::before {
+      content: "✓";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 24px;
+      height: 24px;
+      background: white;
+      color: #0064d2;
+      border-radius: 50%;
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .feature-item span {
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-section {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-content h2 {
+        font-size: 1.8rem;
+      }
+
+      .selling-nav {
+        gap: 15px;
+      }
+
+      .hero-images {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image {
+        height: 150px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="top-bar">
+    <div class="top-bar-start">
+      <span>Hi! <a href=\"/login.html\">Login</a> or <a href=\"/register.html\">Register</a></span>
+      <nav class="top-links">
+        <a href="/deals.html">Deals</a>
+        <a href=\"/brand-outlet.html\">Brand outlet</a>
+        <a href=\"/gift-cards.html\">Gift Cards</a>
+        <a href=\"/contact.html\">Help & Contact</a>
+      </nav>
+    </div>
+    <div class="top-bar-end">
+      <a href=\"/ship-to.html\">Ship to</a>
+      <a href=\"/sell.html\">Sell</a>
+      <a href=\"/cart.html\">Cart</a>
+    </div>
+  </div><hr class="dropdown-divider">
+  <div class="main-header">
+    <a class="logo" href=\"/home.html\">
+      <img src="/assets/images/de-king-logo.svg" alt="De-King Logo" >
+    </a>
+    <form class="search-form" action="#" method="get">
+      <select name="category">
+        <option>All categories</option>
+        <option>Laptops</option>
+        <option>Smartphones</option>
+        <option>Tablets</option>
+      </select>
+      <input type="text" name="q" placeholder="Search for anything">
+      <button type="submit">Search</button>
+    </form>
+    <div class="header-actions">
+      <button type="button" class="icon-btn notify-btn" title="Allow notifications">
+        <span class="icon">🔔</span>
+        <span class="label">Enable notifications</span>
+      </button>
+      <a href=\"/cart.html\" class="icon-btn cart-btn" title="View cart">
+        <span class="icon">🛒</span>
+        <span class="label">Cart</span>
+        <span class="badge">3</span>
+      </a>
+    </div><hr class="dropdown-divider">
+    
+  </div>
+    <h1>Selling</h1>
+</header>
+<main class="page-content">
+  <div class="selling-container">
+    <!-- User Info Section -->
+    <div style="background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%); padding: 20px; border-radius: 8px; margin-bottom: 30px; border-left: 4px solid #0064d2;">
+      <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+        <div>
+          <h3 style="margin: 0 0 5px; color: #0064d2; font-size: 1.1rem;">Welcome back, Seller!</h3>
+          <p style="margin: 0; color: #536077; font-size: 0.95rem;">You're registered and ready to start selling on De-King. List your items and reach millions of buyers.</p>
+        </div>
+        <div style="display: flex; gap: 10px;">
+          <a href=\"/account-settings.html\" style="padding: 8px 16px; background: #0064d2; color: white; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.9rem; transition: background 0.3s ease;" onmouseover="this.style.background='#004fb8'" onmouseout="this.style.background='#0064d2'">My Account</a>
+          <a href=\"/purchase-history.html\" style="padding: 8px 16px; background: white; color: #0064d2; border: 2px solid #0064d2; text-decoration: none; border-radius: 4px; font-weight: 600; font-size: 0.9rem; transition: all 0.3s ease;" onmouseover="this.style.background='#eff6ff'" onmouseout="this.style.background='white'">My Sales</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Selling Navigation -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap;">
+      <div class="selling-nav" id="sellingNav">
+        <a href=\"/sell.html\" class="nav-link active" data-page="business" title="Main selling page">Business selling</a>
+        <a href=\"/selling-tips.html\" class="nav-link" data-page="tips" title="Pro tips for successful listings">Tips for listing</a>
+        <a href=\"/selling-faq.html\" class="nav-link" data-page="faq" title="Frequently asked questions">FAQ</a>
+        <a href=\"/account-settings.html\" class="nav-link" data-page="mykings" title="Your account and listings">My kings</a>
+      </div>
+      <a href="#" class="list-item-btn" onclick="scrollToListing(); return false;">List an item</a>
+    </div>
+
+    <!-- Start Your Listing Section -->
+    <section class="listing-start-section" id="listing-section">
+      <h2>Start your listing</h2>
+      
+      <div class="listing-search">
+        <input type="text" id="productSearch" placeholder="Tell us what you're selling">
+        <button onclick="searchProducts()">Search</button>
+      </div>
+
+      <!-- Steps Visualization -->
+      <div class="steps-visualization">
+        <div class="step-visual">
+          <div class="step-visual-icon">📝</div>
+          <h4>STEP 1</h4>
+          <h4>Share item details</h4>
+          <p>Use keywords like brand, model, or unique info (ISBN, MPN, VIN).</p>
+        </div>
+        <div class="step-visual">
+          <div class="step-visual-icon">🔍</div>
+          <h4>STEP 2</h4>
+          <h4>Find a match</h4>
+          <p>We'll search our catalog to find similar items.</p>
+        </div>
+        <div class="step-visual">
+          <div class="step-visual-icon">✏️</div>
+          <h4>STEP 3</h4>
+          <h4>Edit and list</h4>
+          <p>You can preview or make changes before listing your item.</p>
+        </div>
+      </div>
+
+      <!-- Products Grid -->
+      <div class="products-grid" id="productsGrid" style="display: none;">
+        <!-- Products will load here via JavaScript -->
+      </div>
+    </section>
+
+    <script>
+      // Sample product data - connect to your actual products database
+      const products = [
+        {
+          id: 1,
+          name: "Vintage Purple Sneaker",
+          category: "Fashion",
+          image: "/assets/images/cc3.jpg",
+          description: "Classic retro style"
+        },
+        {
+          id: 2,
+          name: "Designer Athletic Shoe",
+          category: "Sports",
+          image: "/assets/images/kk2.jpg",
+          description: "Premium quality"
+        },
+        {
+          id: 3,
+          name: "Casual Footwear",
+          category: "Fashion",
+          image: "/assets/images/cc33.jpg",
+          description: "Comfortable fit"
+        }
+      ];
+
+      function scrollToListing() {
+        const section = document.getElementById('listing-section');
+        section.scrollIntoView({ behavior: 'smooth' });
+        document.getElementById('productSearch').focus();
+      }
+
+      function searchProducts() {
+        const searchTerm = document.getElementById('productSearch').value.toLowerCase();
+        const grid = document.getElementById('productsGrid');
+        
+        if (searchTerm.trim() === '') {
+          grid.style.display = 'none';
+          return;
+        }
+
+        const filtered = products.filter(product => 
+          product.name.toLowerCase().includes(searchTerm) ||
+          product.category.toLowerCase().includes(searchTerm)
+        );
+
+        if (filtered.length === 0) {
+          grid.innerHTML = '<p style="grid-column: 1/-1; color: #536077;">No products found. Try different keywords.</p>';
+          grid.style.display = 'grid';
+          return;
+        }
+
+        grid.innerHTML = filtered.map(product => `
+          <a href=\"/product-detail.html?id=${product.id}\" class="product-card">
+            <div class="product-image">
+              <img src="${product.image}" alt="${product.name}">
+            </div>
+            <div class="product-info">
+              <h4>${product.name}</h4>
+              <p>${product.description}</p>
+              <span class="product-action">List This Item</span>
+            </div>
+          </a>
+        `).join('');
+
+        grid.style.display = 'grid';
+      }
+
+      // Allow Enter key to search
+      document.addEventListener('DOMContentLoaded', function() {
+        // Set active navigation based on current page
+        const currentPage = window.location.pathname.split('/').pop() || '/sell.html';
+        const navLinks = document.querySelectorAll('.selling-nav a.nav-link');
+        
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          const href = link.getAttribute('href');
+          if (href === currentPage || (currentPage === '' && href === '/sell.html')) {
+            link.classList.add('active');
+          }
+        });
+
+        const searchInput = document.getElementById('productSearch');
+        searchInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            searchProducts();
+          }
+        });
+      });
+    </script>
+
+    <!-- Selling Navigation (Original) -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; margin-top: 60px;">
+    <section class="hero-section">
+      <div class="hero-content">
+        <h2>If you don't love it, list it</h2>
+        <p>Cash in on your pre-loved pieces - millions of buyers are waiting.</p>
+        <a href=\"/selling-help.html\" class="list-item-btn">Sell now</a>
+      </div>
+      <div class="hero-images">
+        <div class="hero-image">
+          <img src="/assets/images/cc3.jpg" alt="Featured product 1">
+        </div>
+        <div class="hero-image">
+          <img src="/assets/images/kk2.jpg" alt="Featured product 2">
+        </div>
+        <div class="hero-image">
+          <img src="/assets/images/cc33.jpg" alt="Featured product 3">
+        </div>
+      </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits-section">
+      <h2>Reach millions of trusted buyers on De-King</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>Quick listing</h3>
+          <p>List in a few steps with AI-powered help for pricing and descriptions. Only pay a final value fee when your item sells.</p>
+          <a href=\"/selling-help.html\">Learn more about fees</a>
+        </div>
+        <div class="benefit-card">
+          <h3>Secure payments</h3>
+          <p>Get paid securely with fraud detection, dispute resolution, and safeguards against abusive buyers.</p>
+          <a href=\"/selling-help.html\">How payments work</a>
+        </div>
+        <div class="benefit-card">
+          <h3>Easy shipping</h3>
+          <p>Pick your carrier or use our suggestions - get discounted shipping labels on De-King, or arrange a local pickup directly with the buyer.</p>
+          <a href=\"/shipping-tracking-help.html\">Shipping options</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps Section -->
+    <section class="step-section">
+      <h2>Selling on De-King is simple</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Create your listing</h3>
+          <p>Add photos, title, description, and set your price. Use our AI suggestions for faster listing.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Find a buyer</h3>
+          <p>Your item appears in search results across our platform. Millions of active buyers browse daily.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Get paid & ship</h3>
+          <p>Receive payment securely, print a shipping label, and hand off to the carrier. Easy returns process.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Build your reputation</h3>
+          <p>Positive feedback from buyers builds your seller reputation and attracts more future buyers.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Sell Section -->
+    <section class="benefits-section">
+      <h2>Why sell on De-King?</h2>
+      <div class="benefits-grid">
+        <div class="benefit-card">
+          <h3>Largest audience</h3>
+          <p>Access millions of active buyers worldwide. Our audience includes power sellers and casual shoppers alike.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Lower fees</h3>
+          <p>Competitive final value fees. No listing fees for most items. More of your money stays with you.</p>
+        </div>
+        <div class="benefit-card">
+          <h3>Seller protection</h3>
+          <p>Buyer guarantees, seller performance standards, and dispute resolution support your business.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+      <h2>Ready to start selling?</h2>
+      <p>Join thousands of successful sellers on De-King. Get access to powerful selling tools, analytics, and support.</p>
+      <div class="features-list">
+        <div class="feature-item">
+          <span>Professional seller tools</span>
+        </div>
+        <div class="feature-item">
+          <span>24/7 seller support</span>
+        </div>
+        <div class="feature-item">
+          <span>Payment tracking</span>
+        </div>
+        <div class="feature-item">
+          <span>Promotional tools</span>
+        </div>
+        <div class="feature-item">
+          <span>Analytics & reports</span>
+        </div>
+        <div class="feature-item">
+          <span>Bulk listing options</span>
+        </div>
+      </div>
+      <div style="margin-top: 30px;">
+        <a href=\"/selling-help.html\" class="cta-button">Start Selling Now</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+
+
+
+
+</main>
+
+</body>
+</html>

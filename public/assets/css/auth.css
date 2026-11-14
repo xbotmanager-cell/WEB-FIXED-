@@ -1,0 +1,282 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    background-color: #f5f5f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.logo1 {
+    height: 135px;
+    width: auto;
+}
+
+.container {
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    margin-bottom: 40px;
+    text-align: center;
+}
+
+.logo {
+    height: 40px;
+    width: auto;
+}
+
+.signin-box {
+    background-color: #f5f5f5;
+    padding: 40px;
+    width: 100%;
+}
+
+.signin-box h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.account-options {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 12px;
+}
+
+.account-options span {
+    font-size: 14px;
+    color: #666;
+}
+
+.create-account-btn {
+    padding: 8px 20px;
+    background-color: white;
+    color: #0066cc;
+    border: 2px solid #0066cc;
+    border-radius: 24px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.create-account-btn:hover {
+    background-color: #f0f7ff;
+}
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    width: 100%;
+}
+
+.input-field {
+    width: 100%;
+    padding: 12px 16px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.2s ease;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #0066cc;
+    box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+.continue-btn {
+    padding: 12px 16px;
+    background-color: #0066cc;
+    color: white;
+    border: none;
+    border-radius: 24px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.continue-btn:hover {
+    background-color: #0052a3;
+}
+
+.continue-btn:active {
+    background-color: #003d7a;
+}
+
+.divider {
+    text-align: center;
+    font-size: 14px;
+    color: #999;
+    margin: 20px 0;
+    position: relative;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background-color: #ddd;
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+.social-login {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 20px 0;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background-color: white;
+    color: #333;
+    border: 1px solid #ddd;
+    border-radius: 24px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.social-btn:hover {
+    border-color: #999;
+    background-color: #f9f9f9;
+}
+
+.social-btn:active {
+    background-color: #f0f0f0;
+}
+
+.social-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.google-btn .social-icon {
+    color: #4285F4;
+}
+
+.apple-btn .social-icon {
+    color: #000;
+}
+
+.facebook-btn .social-icon {
+    color: #1877F2;
+}
+
+.stay-signed-in {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+    font-size: 14px;
+    color: #333;
+}
+
+.checkbox {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #0066cc;
+}
+
+.info-icon {
+    width: 16px;
+    height: 16px;
+    color: #999;
+    cursor: help;
+}
+
+.footer {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 12px;
+    color: #666;
+    max-width: 500px;
+}
+
+.footer p {
+    margin-bottom: 12px;
+}
+
+.footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    justify-content: center;
+}
+
+.footer-links a {
+    color: #0066cc;
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: #003d7a;
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .signin-box {
+        padding: 24px;
+    }
+
+    .signin-box h1 {
+        font-size: 20px;
+    }
+
+    .account-options {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-links {
+        gap: 4px;
+    }
+
+    .footer-links a {
+        display: inline-block;
+    }
+}

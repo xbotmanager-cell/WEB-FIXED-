@@ -1,0 +1,23 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "rewrites": [
+    { "source": "/register/personal", "destination": "/api/register?type=personal" },
+    { "source": "/register/business", "destination": "/api/register?type=business" },
+    { "source": "/auth/:provider", "destination": "/api/auth?provider=:provider" },
+    { "source": "/deals.php", "destination": "/tech.html" },
+    { "source": "/deals", "destination": "/tech.html" },
+    { "source": "/featured.php", "destination": "/brand-outlet.html" },
+    { "source": "/featured", "destination": "/brand-outlet.html" },
+    { "source": "/fashion.php", "destination": "/brand-outlet.html" },
+    { "source": "/fashion", "destination": "/brand-outlet.html" },
+    { "source": "/home-goods.php", "destination": "/home-and-garden.html" },
+    { "source": "/home-goods", "destination": "/home-and-garden.html" },
+    { "source": "/more.php", "destination": "/tech.html" },
+    { "source": "/more", "destination": "/tech.html" },
+    { "source": "/:page.php", "destination": "/:page.html" }
+  ]
+}

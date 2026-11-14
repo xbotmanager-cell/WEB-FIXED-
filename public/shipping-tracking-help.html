@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shipping & Tracking Help - De-King</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+      .help-page-main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .help-header {
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid #e5e5e5;
+      }
+
+      .help-header h1 {
+        font-size: 2.5rem;
+        margin: 0 0 10px;
+        color: #111;
+      }
+
+      .help-header p {
+        font-size: 1.1rem;
+        color: #536077;
+        margin: 0;
+      }
+
+      .help-section {
+        margin-bottom: 40px;
+      }
+
+      .help-section h2 {
+        font-size: 1.5rem;
+        margin: 0 0 20px;
+        color: #111;
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .faq-card {
+        background: #f8fafc;
+        border: 1px solid #e5e8f0;
+        border-radius: 12px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .faq-card:hover {
+        border-color: #0064d2;
+        box-shadow: 0 4px 12px rgba(0, 100, 210, 0.1);
+      }
+
+      .faq-card h3 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        color: #0f172a;
+      }
+
+      .faq-card p {
+        margin: 0;
+        color: #536077;
+        font-size: 0.9rem;
+        display: none;
+      }
+
+      .faq-card.active p {
+        display: block;
+      }
+
+      .breadcrumb12 {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 6px;
+        margin: 20px 0;
+        font-size: 0.95rem;
+        color: #4d5766;
+      }
+
+      .breadcrumb12 a {
+        color: #0064d2;
+        text-decoration: none;
+      }
+
+      .breadcrumb12 a:hover {
+        text-decoration: underline;
+      }
+
+      .breadcrumb12 .breadcrumb-separator {
+        color: #4d5766;
+      }
+
+      .tips-section {
+        background: #eff6ff;
+        border-left: 4px solid #0064d2;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 30px 0;
+      }
+
+      .tips-section h3 {
+        margin: 0 0 12px;
+        color: #0064d2;
+      }
+
+      .tips-section ul {
+        margin: 0;
+        padding-left: 20px;
+        color: #536077;
+      }
+
+      .tips-section li {
+        margin-bottom: 8px;
+      }
+
+      .cta-button {
+        display: inline-block;
+        padding: 14px 22px;
+        border-radius: 999px;
+        background: #0064d2;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        margin-top: 10px;
+      }
+
+      .shipping-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .option-card {
+        background: #f8fafc;
+        border: 1px solid #e5e8f0;
+        border-radius: 12px;
+        padding: 20px;
+      }
+
+      .option-card h3 {
+        margin: 0 0 10px;
+        color: #0f172a;
+      }
+
+      .option-card .delivery-time {
+        color: #0064d2;
+        font-weight: 600;
+        margin-bottom: 8px;
+      }
+
+      .option-card p {
+        margin: 0;
+        color: #536077;
+        font-size: 0.9rem;
+      }
+    </style>
+</head>
+<body>
+<header>
+  <div class="top-bar">
+    <div class="top-bar-start">
+      <span>Hi! <a href=\"/login.html\">Login</a> or <a href=\"/register.html\">Register</a></span>
+      <nav class="top-links">
+        <a href="/deals.html">Deals</a>
+        <a href=\"/brand-outlet.html\">Brand outlet</a>
+        <a href=\"/gift-cards.html\">Gift Cards</a>
+        <a href=\"/contact.html\">Help & Contact</a>
+      </nav>
+    </div>
+    <div class="top-bar-end">
+      <a href=\"/ship-to.html\">Ship to</a>
+      <a href=\"/sell.html\">Sell</a>
+      <a href=\"/cart.html\">Cart</a>
+    </div>
+  </div>
+  <div class="main-header">
+    <a class="logo" href=\"/home.html\">
+      <img src="/assets/images/de-king-logo.svg" alt="De-King Logo">
+    </a>
+    <h1>Help Center</h1>
+  </div>
+  <div class="breadcrumb12">
+    <a href=\"/home.html\">De-King</a>
+    <span class="breadcrumb-separator">›</span>
+    <a href=\"/contact.html\">Help & Contact</a>
+    <span class="breadcrumb-separator">›</span>
+    <span>Shipping & Tracking</span>
+  </div>
+</header>
+
+<main class="help-page-main">
+  <div class="help-header">
+    <h1>🚚 Shipping & Tracking</h1>
+    <p>Get information about shipping options and track your orders</p>
+  </div>
+
+  <div class="help-section">
+    <h2>Shipping Options</h2>
+    <div class="shipping-options">
+      <div class="option-card">
+        <h3>Standard Shipping</h3>
+        <div class="delivery-time">5-7 Business Days</div>
+        <p>Most affordable shipping option. Perfect for non-urgent items. Includes package tracking.</p>
+      </div>
+
+      <div class="option-card">
+        <h3>Expedited Shipping</h3>
+        <div class="delivery-time">2-3 Business Days</div>
+        <p>Faster delivery for time-sensitive purchases. Full tracking and insurance included.</p>
+      </div>
+
+      <div class="option-card">
+        <h3>Next-Day Shipping</h3>
+        <div class="delivery-time">1 Business Day</div>
+        <p>Premium option for urgent needs. Available on select items. Saturday delivery available.</p>
+      </div>
+
+      <div class="option-card">
+        <h3>In-Store Pickup</h3>
+        <div class="delivery-time">1-2 Business Days</div>
+        <p>Pick up your item at a nearby De-King retail location. Skip shipping costs!</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="help-section">
+    <h2>Common Questions</h2>
+    <div class="faq-grid">
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>How do I track my order?</h3>
+        <p>Log into your account, go to "Purchase History," select your order, and click "Track Package." You'll see real-time updates from pickup to delivery. You can also use the tracking number emailed to you.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>How long does shipping take?</h3>
+        <p>Delivery times depend on your selected shipping method and location. Standard shipping typically takes 5-7 business days. Check the estimated delivery date shown in your order details.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>What is the shipping cost?</h3>
+        <p>Shipping costs vary based on item weight, destination, and selected method. You'll see the total shipping cost before completing checkout. Some items may qualify for free shipping.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>Can I change my shipping address?</h3>
+        <p>You can change your address during checkout before finalizing payment. After purchase, contact us immediately if the item hasn't shipped yet. Changes may not be possible once shipping has started.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>What if my package is delayed?</h3>
+        <p>If your package is delayed beyond the estimated delivery date, check the tracking for updates. Contact the carrier for status. If significantly delayed, contact the seller or our support team.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>How do I report a missing package?</h3>
+        <p>Check with neighbors or look for delivery notifications. Wait 24-48 hours for delivery attempts. Then contact the seller or our support team with your tracking number to file a claim.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>What if my package arrives damaged?</h3>
+        <p>Document the damage with photos immediately. Contact the seller within 48 hours of delivery. Provide photos and your tracking number. You may be eligible for a replacement or full refund.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>Do you ship internationally?</h3>
+        <p>Yes! We ship to many countries worldwide. International shipping times vary by destination (typically 2-4 weeks). Additional customs fees may apply based on local regulations.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-section">
+    <h3>💡 Shipping Tips</h3>
+    <ul>
+      <li><strong>Choose appropriate shipping:</strong> Balance cost and delivery speed based on your needs.</li>
+      <li><strong>Add insurance:</strong> For valuable items, consider adding shipping insurance for protection.</li>
+      <li><strong>Track your package:</strong> Monitor tracking regularly to know when to expect delivery.</li>
+      <li><strong>Be home for delivery:</strong> Be available during the estimated delivery window.</li>
+      <li><strong>Save tracking info:</strong> Keep tracking numbers for your records (usually valid for 1 year).</li>
+      <li><strong>Check signatures:</strong> High-value items may require a signature at delivery.</li>
+      <li><strong>Report issues promptly:</strong> If something seems wrong, report it quickly to preserve evidence.</li>
+    </ul>
+  </div>
+
+  <div class="help-section">
+    <h2>Track Your Orders</h2>
+    <p>View and manage your current shipments:</p>
+    <a href=\"/purchase-history.html\" class="cta-button">Go to Purchase History</a>
+  </div>
+
+  <div class="help-section">
+    <h2>Need More Help?</h2>
+    <p>Contact our shipping support team:</p>
+    <a href=\"/contact-us.html\" class="cta-button">Contact Support</a>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-top">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h4>Buy</h4>
+        <ul>
+          <li><a href=\"/home.html\">Browse Products</a></li>
+          <li><a href="/deals.html">Deals</a></li>
+          <li><a href=\"/gift-cards.html\">Gift Cards</a></li>
+          <li><a href="/brand-outlet.html">Category Directory</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Sell</h4>
+        <ul>
+          <li><a href=\"/sell.html\">Start Selling</a></li>
+          <li><a href=\"/selling-help.html\">Seller Center</a></li>
+          <li><a href=\"/fees-billing-help.html\">Fees & Policies</a></li>
+          <li><a href=\"/selling-help.html\">Sell Tools</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>About</h4>
+        <ul>
+          <li><a href=\"/home.html\">About De-King</a></li>
+          <li><a href=\"/home.html\">Careers</a></li>
+          <li><a href=\"/home.html\">Press</a></li>
+          <li><a href=\"/home.html\">Corporate Responsibility</a></li>
+        </ul>
+      </div>
+      <div class="footer-column newsletter">
+        <h4>Stay in the loop</h4>
+        <p class="muted">Subscribe for deals, new arrivals and updates.</p>
+        <form class="newsletter-form" action="#" method="post" onsubmit="return false;">
+          <label for="newsletter-email" class="visually-hidden">Email address</label>
+          <input id="newsletter-email" type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(element) {
+  element.classList.toggle('active');
+}
+</script>
+</body>
+</html>

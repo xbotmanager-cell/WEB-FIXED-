@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selling FAQ - De-King</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #0f172a;
+      background: #f8fafc;
+    }
+
+    header {
+      background: white;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0064d2;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav a {
+      color: #0064d2;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #004fb8;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #536077;
+      margin-bottom: 50px;
+    }
+
+    .selling-nav {
+      display: flex;
+      gap: 30px;
+      border-bottom: 2px solid #e5e5e5;
+      margin-bottom: 40px;
+      padding-bottom: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .selling-nav a {
+      color: #666;
+      text-decoration: none;
+      font-weight: 500;
+      padding-bottom: 5px;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .selling-nav a:hover {
+      color: #0064d2;
+      border-bottom-color: #0064d2;
+      transform: translateY(-2px);
+    }
+
+    .selling-nav a.active {
+      color: #0064d2;
+      border-bottom-color: #0064d2;
+      font-weight: 600;
+    }
+
+    .selling-nav a::before {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #0064d2, transparent);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .selling-nav a:hover::before {
+      width: 100%;
+    }
+
+    .faq-grid {
+      display: grid;
+      gap: 20px;
+      margin: 40px 0;
+    }
+
+    .faq-card {
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .faq-card:hover {
+      box-shadow: 0 4px 12px rgba(0, 100, 210, 0.15);
+    }
+
+    .faq-question {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: linear-gradient(135deg, #eff6ff 0%, #f8fafc 100%);
+      cursor: pointer;
+      border-left: 4px solid #0064d2;
+      font-weight: 600;
+      color: #0f172a;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .faq-question:hover {
+      background: linear-gradient(135deg, #e0f0ff 0%, #f0f5ff 100%);
+    }
+
+    .faq-question.active {
+      background: linear-gradient(135deg, #0064d2 0%, #004fb8 100%);
+      color: white;
+    }
+
+    .faq-toggle {
+      font-size: 20px;
+      transition: transform 0.3s ease;
+    }
+
+    .faq-question.active .faq-toggle {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease;
+      background: white;
+    }
+
+    .faq-answer.active {
+      max-height: 500px;
+    }
+
+    .faq-answer-content {
+      padding: 20px;
+      color: #536077;
+      line-height: 1.8;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #0064d2 0%, #004fb8 100%);
+      color: white;
+      padding: 60px 40px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 60px 0;
+    }
+
+    .cta-section h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .cta-section p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      opacity: 0.95;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: white;
+      color: #0064d2;
+      padding: 14px 40px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cta-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      background: #0f172a;
+      color: white;
+      padding: 50px 20px;
+      margin-top: 60px;
+    }
+
+    footer-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+    }
+
+    footer-link-group h3 {
+      margin-bottom: 15px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #e5e5e5;
+    }
+
+    footer-link-group a {
+      display: block;
+      color: #a0a9b8;
+      text-decoration: none;
+      margin-bottom: 10px;
+      font-size: 13px;
+      transition: color 0.3s ease;
+    }
+
+    footer-link-group a:hover {
+      color: #0064d2;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #333;
+      padding-top: 20px;
+      color: #a0a9b8;
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      .faq-question {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .selling-nav {
+        gap: 15px;
+      }
+
+      .cta-section {
+        padding: 40px 20px;
+      }
+
+      .cta-section h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <a href=\"/home.html\" class="logo">De-King</a>
+      <div style="display: flex; gap: 20px;">
+        <a href=\"/home.html\">Home</a>
+        <a href=\"/contact.html\">Help</a>
+        <a href=\"/sell.html\">Sell</a>
+        <a href=\"/account-settings.html\">Account</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>Selling FAQ</h1>
+    <p class="subtitle">Answers to common questions about selling on De-King</p>
+
+    <!-- Navigation Bar -->
+    <div class="selling-nav" id="sellingNav">
+      <a href=\"/sell.html\" class="nav-link" data-page="business" title="Main selling page">Business selling</a>
+      <a href=\"/selling-tips.html\" class="nav-link" data-page="tips" title="Pro tips for successful listings">Tips for listing</a>
+      <a href=\"/selling-faq.html\" class="nav-link active" data-page="faq" title="Frequently asked questions">FAQ</a>
+      <a href=\"/account-settings.html\" class="nav-link" data-page="myebay" title="Your account and listings">My eBay</a>
+    </div>
+
+    <!-- FAQ Grid -->
+    <div class="faq-grid">
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>How do I list an item for sale?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Click "Sell" in the navigation, fill out the listing form with item details, upload photos, set your price, and choose shipping options. Our AI-powered tools can help with pricing suggestions and descriptions. Your item will be live within minutes.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>What are the listing fees?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            We charge an insertion fee of $0.30-$4.80 depending on category. When your item sells, we collect a Final Value Fee (typically 12.9% of the sale price). Optional features like featured listings, gallery pictures, and bold titles have separate fees. See our Fees & Billing page for complete details.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>How long does a listing stay active?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            You can choose listing durations of 7, 14, or 30 days. After your selected duration ends, the listing expires automatically. You can relist items or renew existing listings to keep them active. Items that sell end immediately upon completion of the sale.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Can I edit my listing after posting?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Yes! You can edit most listing details at any time, including title, description, price, and photos. Changes take effect immediately. If your item has received bids, you cannot change the price or quantity. Revisions help you respond to buyer inquiries and optimize your listing.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>How do I get paid for items I sell?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Payments are deposited to your bank account, PayPal, or other linked payment method within 1-3 business days after the buyer receives their item. We handle all payment processing securely with fraud detection and buyer protection built-in, so you don't need to process payments directly.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>What if a buyer doesn't pay?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            If a buyer doesn't pay within 4 days, you can open an unpaid case. We'll send payment reminders automatically. After 7 days of non-payment, you can close the case and relist the item. Repeat non-payers can be blocked from bidding on your items in the future.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>How should I handle item returns?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            If a buyer requests a return, communicate promptly and follow our return guidelines. Check item eligibility and condition upon receipt. Process refunds within 2 business days of receiving the returned item. Most returns must be initiated within 30 days of delivery. Building a reputation for fair returns increases buyer confidence.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>What items am I not allowed to sell?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Prohibited items include weapons, counterfeit goods, live animals, hazardous materials, and stolen property. Restricted items like electronics require verified seller status. Tobacco and alcohol may have age verification requirements. Review our complete prohibited and restricted items list before listing to ensure compliance.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>How can I improve my seller rating?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Provide accurate item descriptions, ship quickly and securely, communicate professionally with buyers, and resolve issues fairly. High positive ratings lead to increased visibility and buyer trust. Aim for 4.8+ stars to become a "Top Rated" seller with eligibility for promotions and discounts.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>Can I offer promotions or discounts?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Yes! You can create promotional offers, offer bulk discounts, or run sales on your items. De-King provides promotional tools to help you reach more buyers. Strategic discounts on slow-moving items can increase sales velocity and generate positive reviews from satisfied customers.
+          </div>
+        </div>
+      </div>
+
+      <div class="faq-card">
+        <div class="faq-question" onclick="toggleFAQ(this)">
+          <span>What shipping options should I offer?</span>
+          <span class="faq-toggle">▼</span>
+        </div>
+        <div class="faq-answer">
+          <div class="faq-answer-content">
+            Offer multiple shipping options: standard 5-7 day shipping, expedited 2-3 day shipping, and next-day options for premium buyers. Consider offering free shipping on competitive pricing to attract more bidders. Use flat-rate shipping when it benefits you or calculated shipping for accurate costs.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <h2>Still Have Questions?</h2>
+      <p>Visit our comprehensive seller help center or contact our support team</p>
+      <a href=\"/selling-help.html\" class="cta-btn">View Seller Help Center</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <footer-links>
+      <footer-link-group>
+        <h3>BUYING</h3>
+        <a href=\"/home.html\">Home</a>
+        <a href="/deals.html">Deals</a>
+        <a href="/brand-outlet.html">Featured</a>
+        <a href=\"/buying-help.html\">Buying Help</a>
+      </footer-link-group>
+      <footer-link-group>
+        <h3>SELLING</h3>
+        <a href=\"/sell.html\">Start Selling</a>
+        <a href=\"/selling-help.html\">Selling Help</a>
+        <a href=\"/selling-tips.html\">Seller Tips</a>
+        <a href=\"/fees-billing-help.html\">Fees & Billing</a>
+      </footer-link-group>
+      <footer-link-group>
+        <h3>ACCOUNT</h3>
+        <a href=\"/account-settings.html\">My Account</a>
+        <a href=\"/purchase-history.html\">Purchase History</a>
+        <a href=\"/saved.html\">Saved Items</a>
+        <a href=\"/account-help.html\">Account Help</a>
+      </footer-link-group>
+      <footer-link-group>
+        <h3>SUPPORT</h3>
+        <a href=\"/contact.html\">Contact Us</a>
+        <a href=\"/returns-refunds-help.html\">Returns & Refunds</a>
+        <a href=\"/shipping-tracking-help.html\">Shipping & Tracking</a>
+        <a href=\"/buying-help.html\">Help Center</a>
+      </footer-link-group>
+    </footer-links>
+    <div class="footer-bottom">
+      <p>&copy; 2024 De-King Marketplace. All rights reserved. | <a href=\"/home.html\" style="color: inherit; text-decoration: none;">Privacy Policy</a> | <a href=\"/home.html\" style="color: inherit; text-decoration: none;">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    function toggleFAQ(element) {
+      const question = element;
+      const answer = element.nextElementSibling;
+      
+      // Close other open FAQs
+      document.querySelectorAll('.faq-question').forEach(q => {
+        if (q !== question) {
+          q.classList.remove('active');
+          q.nextElementSibling.classList.remove('active');
+        }
+      });
+      
+      // Toggle current FAQ
+      question.classList.toggle('active');
+      answer.classList.toggle('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set active navigation based on current page
+      const currentPage = window.location.pathname.split('/').pop() || '/selling-faq.html';
+      const navLinks = document.querySelectorAll('.selling-nav a.nav-link');
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

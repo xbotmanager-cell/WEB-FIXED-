@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buying Help - De-King</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+      .help-page-main {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .help-header {
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid #e5e5e5;
+      }
+
+      .help-header h1 {
+        font-size: 2.5rem;
+        margin: 0 0 10px;
+        color: #111;
+      }
+
+      .help-header p {
+        font-size: 1.1rem;
+        color: #536077;
+        margin: 0;
+      }
+
+      .help-section {
+        margin-bottom: 40px;
+      }
+
+      .help-section h2 {
+        font-size: 1.5rem;
+        margin: 0 0 20px;
+        color: #111;
+      }
+
+      .faq-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+      }
+
+      .faq-card {
+        background: #f8fafc;
+        border: 1px solid #e5e8f0;
+        border-radius: 12px;
+        padding: 20px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .faq-card:hover {
+        border-color: #0064d2;
+        box-shadow: 0 4px 12px rgba(0, 100, 210, 0.1);
+      }
+
+      .faq-card h3 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        color: #0f172a;
+      }
+
+      .faq-card p {
+        margin: 0;
+        color: #536077;
+        font-size: 0.9rem;
+        display: none;
+      }
+
+      .faq-card.active p {
+        display: block;
+      }
+
+      .breadcrumb12 {
+        display: inline-flex;
+        flex-wrap: nowrap;
+        align-items: center;
+        gap: 6px;
+        margin: 20px 0;
+        font-size: 0.95rem;
+        color: #4d5766;
+      }
+
+      .breadcrumb12 a {
+        color: #0064d2;
+        text-decoration: none;
+      }
+
+      .breadcrumb12 a:hover {
+        text-decoration: underline;
+      }
+
+      .breadcrumb12 .breadcrumb-separator {
+        color: #4d5766;
+      }
+
+      .tips-section {
+        background: #eff6ff;
+        border-left: 4px solid #0064d2;
+        padding: 20px;
+        border-radius: 8px;
+        margin: 30px 0;
+      }
+
+      .tips-section h3 {
+        margin: 0 0 12px;
+        color: #0064d2;
+      }
+
+      .tips-section ul {
+        margin: 0;
+        padding-left: 20px;
+        color: #536077;
+      }
+
+      .tips-section li {
+        margin-bottom: 8px;
+      }
+    </style>
+</head>
+<body>
+<header>
+  <div class="top-bar">
+    <div class="top-bar-start">
+      <span>Hi! <a href=\"/login.html\">Login</a> or <a href=\"/register.html\">Register</a></span>
+      <nav class="top-links">
+        <a href="/deals.html">Deals</a>
+        <a href=\"/brand-outlet.html\">Brand outlet</a>
+        <a href=\"/gift-cards.html\">Gift Cards</a>
+        <a href=\"/contact.html\">Help & Contact</a>
+      </nav>
+    </div>
+    <div class="top-bar-end">
+      <a href=\"/ship-to.html\">Ship to</a>
+      <a href=\"/sell.html\">Sell</a>
+      <a href=\"/cart.html\">Cart</a>
+    </div>
+  </div>
+  <div class="main-header">
+    <a class="logo" href=\"/home.html\">
+      <img src="/assets/images/de-king-logo.svg" alt="De-King Logo">
+    </a>
+    <h1>Help Center</h1>
+  </div>
+  <div class="breadcrumb12">
+    <a href=\"/home.html\">De-King</a>
+    <span class="breadcrumb-separator">›</span>
+    <a href=\"/contact.html\">Help & Contact</a>
+    <span class="breadcrumb-separator">›</span>
+    <span>Buying Help</span>
+  </div>
+</header>
+
+<main class="help-page-main">
+  <div class="help-header">
+    <h1>🛒 Buying Help</h1>
+    <p>Everything you need to know about purchasing items on De-King</p>
+  </div>
+
+  <div class="help-section">
+    <h2>Common Questions</h2>
+    <div class="faq-grid">
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>How do I search for items?</h3>
+        <p>Use the search bar at the top of any page to find specific items. You can filter results by category, price, condition, and more. Type keywords or item numbers to narrow down your search.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>How do I make a purchase?</h3>
+        <p>Browse items, select the one you want, choose your quantity and options, then click "Buy Now" or "Place Bid" (for auctions). Add items to your cart, proceed to checkout, and complete payment. You'll receive an order confirmation via email.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>What payment methods are accepted?</h3>
+        <p>We accept credit cards (Visa, Mastercard, American Express), debit cards, PayPal, Apple Pay, and Google Pay. All payments are secure and encrypted. Choose your preferred method at checkout.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>Can I bid on auctions as a guest?</h3>
+        <p>No, you must create an account to bid on auction items. However, you can purchase items listed as "Buy It Now" without logging in. Creating an account is free and takes just a few minutes.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>How do I track my order?</h3>
+        <p>Once your item ships, you'll receive a tracking number via email. Log into your account, go to "Purchase History," and click on your order to see real-time tracking information.</p>
+      </div>
+
+      <div class="faq-card" onclick="toggleFaq(this)">
+        <h3>Can I cancel an order?</h3>
+        <p>You can cancel most orders within 30 minutes of purchase if the seller hasn't shipped it yet. Visit your Purchase History, select the order, and click "Cancel Order." Some items may not be cancellable.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="tips-section">
+    <h3>💡 Buying Tips</h3>
+    <ul>
+      <li><strong>Check seller ratings:</strong> Always review seller feedback before purchasing. Look for 95%+ positive feedback.</li>
+      <li><strong>Read item descriptions carefully:</strong> Pay attention to condition, size, color, and any defects mentioned.</li>
+      <li><strong>Review photos:</strong> Zoom in on product photos to get a better look at the item's condition.</li>
+      <li><strong>Check return policies:</strong> Understand the seller's return window and condition requirements.</li>
+      <li><strong>Ask questions:</strong> Contact sellers before bidding if you need clarification on item details.</li>
+      <li><strong>Use "Watch" feature:</strong> Add items to your watch list to track price changes and get notifications.</li>
+      <li><strong>Set bid limits:</strong> Decide your maximum bid amount before participating in auctions to avoid overpaying.</li>
+    </ul>
+  </div>
+
+  <div class="help-section">
+    <h2>Need More Help?</h2>
+    <p>If you couldn't find what you're looking for, contact our support team:</p>
+    <a href=\"/contact-us.html\" class="contact-button" style="display: inline-block; padding: 14px 22px; border-radius: 999px; background: #0064d2; color: #fff; text-decoration: none; font-weight: 700; margin-top: 10px;">Contact Support</a>
+  </div>
+</main>
+
+<footer class="footer" role="contentinfo">
+  <div class="footer-top">
+    <div class="footer-grid">
+      <div class="footer-column">
+        <h4>Buy</h4>
+        <ul>
+          <li><a href=\"/home.html\">Browse Products</a></li>
+          <li><a href="/deals.html">Deals</a></li>
+          <li><a href=\"/gift-cards.html\">Gift Cards</a></li>
+          <li><a href="/brand-outlet.html">Category Directory</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Sell</h4>
+        <ul>
+          <li><a href=\"/sell.html\">Start Selling</a></li>
+          <li><a href=\"/selling-help.html\">Seller Center</a></li>
+          <li><a href=\"/fees-billing-help.html\">Fees & Policies</a></li>
+          <li><a href=\"/selling-help.html\">Sell Tools</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>About</h4>
+        <ul>
+          <li><a href=\"/home.html\">About De-King</a></li>
+          <li><a href=\"/home.html\">Careers</a></li>
+          <li><a href=\"/home.html\">Press</a></li>
+          <li><a href=\"/home.html\">Corporate Responsibility</a></li>
+        </ul>
+      </div>
+      <div class="footer-column newsletter">
+        <h4>Stay in the loop</h4>
+        <p class="muted">Subscribe for deals, new arrivals and updates.</p>
+        <form class="newsletter-form" action="#" method="post" onsubmit="return false;">
+          <label for="newsletter-email" class="visually-hidden">Email address</label>
+          <input id="newsletter-email" type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+function toggleFaq(element) {
+  element.classList.toggle('active');
+}
+</script>
+</body>
+</html>

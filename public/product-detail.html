@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List Item</title>
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <style>
+    .product-detail-container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .product-detail-header {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-detail-header h1 {
+      margin: 0 0 20px;
+      font-size: 2rem;
+      color: #111;
+    }
+
+    .product-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 30px;
+    }
+
+    .product-image-large {
+      background: #f0f0f0;
+      border-radius: 12px;
+      overflow: hidden;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .product-image-large img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-listing-form {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+
+    .product-listing-form h3 {
+      margin: 0 0 20px;
+      font-size: 1.3rem;
+      color: #111;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #111;
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 2px solid #e5e5e5;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      transition: border-color 0.3s ease;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #0064d2;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 15px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px 20px;
+      background: #0064d2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .submit-btn:hover {
+      background: #004fb8;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: #0064d2;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .back-link:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .product-detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .product-image-large {
+        height: 300px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="top-bar">
+    <div class="top-bar-start">
+      <span>Hi! <a href=\"/login.html\">Login</a> or <a href=\"/register.html\">Register</a></span>
+      <nav class="top-links">
+        <a href="/deals.html">Deals</a>
+        <a href=\"/brand-outlet.html\">Brand outlet</a>
+        <a href=\"/gift-cards.html\">Gift Cards</a>
+        <a href=\"/contact.html\">Help & Contact</a>
+      </nav>
+    </div>
+    <div class="top-bar-end">
+      <a href=\"/ship-to.html\">Ship to</a>
+      <a href=\"/sell.html\">Sell</a>
+      <a href=\"/cart.html\">Cart</a>
+    </div>
+  </div><hr class="dropdown-divider">
+  <div class="main-header">
+    <a class="logo" href=\"/home.html\">
+      <img src="/assets/images/de-king-logo.svg" alt="De-King Logo" >
+    </a>
+    <form class="search-form" action="#" method="get">
+      <select name="category">
+        <option>All categories</option>
+        <option>Laptops</option>
+        <option>Smartphones</option>
+        <option>Tablets</option>
+      </select>
+      <input type="text" name="q" placeholder="Search for anything">
+      <button type="submit">Search</button>
+    </form>
+    <div class="header-actions">
+      <button type="button" class="icon-btn notify-btn" title="Allow notifications">
+        <span class="icon">🔔</span>
+        <span class="label">Enable notifications</span>
+      </button>
+      <a href=\"/cart.html\" class="icon-btn cart-btn" title="View cart">
+        <span class="icon">🛒</span>
+        <span class="label">Cart</span>
+        <span class="badge">3</span>
+      </a>
+    </div><hr class="dropdown-divider">
+  </div>
+    <h1>Create Your Listing</h1>
+</header>
+
+<main class="page-content">
+  <div class="product-detail-container">
+    <a href=\"/sell.html\" class="back-link">← Back to selling</a>
+
+    <div class="product-detail-header">
+      <h1>List Your Item</h1>
+      <p style="color: #536077; margin: 0;">Complete the form below to create your listing</p>
+    </div>
+
+    <div class="product-detail-grid">
+      <div class="product-image-large">
+        <img src="/assets/images/cc3.jpg" alt="Product to list" id="productImage">
+      </div>
+
+      <form class="product-listing-form" onsubmit="handleSubmit(event)">
+        <h3>Listing Details</h3>
+
+        <div class="form-group">
+          <label for="itemTitle">Item Title *</label>
+          <input type="text" id="itemTitle" name="title" placeholder="Be specific with brand, model, size, color" required>
+        </div>
+
+        <div class="form-group">
+          <label for="category">Category *</label>
+          <select id="category" name="category" required>
+            <option value="">Select a category</option>
+            <option value="fashion">Fashion</option>
+            <option value="electronics">Electronics</option>
+            <option value="sports">Sports & Outdoors</option>
+            <option value="collectibles">Collectibles</option>
+            <option value="home">Home & Garden</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          <textarea id="description" name="description" placeholder="Describe the condition, features, and any flaws"></textarea>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="price">Price (USD) *</label>
+            <input type="number" id="price" name="price" placeholder="0.00" step="0.01" min="0" required>
+          </div>
+
+          <div class="form-group">
+            <label for="condition">Condition *</label>
+            <select id="condition" name="condition" required>
+              <option value="">Select condition</option>
+              <option value="new">New</option>
+              <option value="like-new">Like New</option>
+              <option value="excellent">Excellent</option>
+              <option value="good">Good</option>
+              <option value="fair">Fair</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="quantity">Quantity *</label>
+            <input type="number" id="quantity" name="quantity" value="1" min="1" required>
+          </div>
+
+          <div class="form-group">
+            <label for="duration">Duration (days) *</label>
+            <select id="duration" name="duration" required>
+              <option value="7">7 days</option>
+              <option value="14">14 days</option>
+              <option value="30">30 days</option>
+            </select>
+          </div>
+        </div>
+
+        <button type="submit" class="submit-btn">List Item Now</button>
+      </form>
+    </div>
+  </div>
+</main>
+
+<footer style="background: #f8fafc; padding: 40px 20px; text-align: center; margin-top: 60px; border-top: 1px solid #e5e5e5;">
+  <nav style="margin-bottom: 20px;">
+    <a href=\"/home.html\" style="margin: 0 15px; color: #0064d2; text-decoration: none;">Home</a>
+    <a href=\"/contact.html\" style="margin: 0 15px; color: #0064d2; text-decoration: none;">Help & Contact</a>
+    <a href=\"/selling-help.html\" style="margin: 0 15px; color: #0064d2; text-decoration: none;">Selling Guide</a>
+  </nav>
+  <p style="color: #536077; margin: 10px 0 0 0;">© 2024 De-King. All rights reserved.</p>
+</footer>
+
+<script>
+    (function syncSelectedProduct() {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+    const imgMap = {
+      "1": "/assets/images/cc3.jpg",
+      "2": "/assets/images/kk2.jpg",
+      "3": "/assets/images/cc33.jpg"
+    };
+    const imgEl = document.getElementById("productImage");
+    if (id && imgMap[id] && imgEl) {
+      imgEl.src = imgMap[id];
+    }
+  })();
+
+  function handleSubmit(event) {
+    event.preventDefault();
+    const formData = {
+      title: document.getElementById("itemTitle").value,
+      category: document.getElementById("category").value,
+      description: document.getElementById("description").value,
+      price: document.getElementById("price").value,
+      condition: document.getElementById("condition").value,
+      quantity: document.getElementById("quantity").value,
+      duration: document.getElementById("duration").value
+    };
+    let statusEl = document.getElementById("listingStatus");
+    if (!statusEl) {
+      statusEl = document.createElement("p");
+      statusEl.id = "listingStatus";
+      statusEl.style.cssText = "margin-top:14px;padding:12px;border-radius:6px;background:#ecfdf5;color:#065f46;font-weight:600;";
+      event.target.appendChild(statusEl);
+    }
+    statusEl.textContent = "Your item has been listed successfully! Title: " + formData.title + " | Price: $" + formData.price;
+    setTimeout(() => {
+      window.location.href = "/sell.html";
+    }, 2000);
+  }
+</script>
+
+</body>
+</html>

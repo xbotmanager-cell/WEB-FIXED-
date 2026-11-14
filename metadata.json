@@ -1,0 +1,6 @@
+{
+  "name": "De-King Marketplace",
+  "description": "De-King online marketplace for electronics, deals, brand outlet, gift cards, selling tools, and customer support.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

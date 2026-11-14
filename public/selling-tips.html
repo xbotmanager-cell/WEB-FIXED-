@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seller Tips & Best Practices - De-King</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      color: #0f172a;
+      background: #f8fafc;
+    }
+
+    header {
+      background: white;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #0064d2;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    nav a {
+      color: #0064d2;
+      text-decoration: none;
+      margin: 0 15px;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #004fb8;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 42px;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+
+    .subtitle {
+      font-size: 18px;
+      color: #536077;
+      margin-bottom: 50px;
+    }
+
+    .selling-nav {
+      display: flex;
+      gap: 30px;
+      border-bottom: 2px solid #e5e5e5;
+      margin-bottom: 40px;
+      padding-bottom: 15px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .selling-nav a {
+      color: #666;
+      text-decoration: none;
+      font-weight: 500;
+      padding-bottom: 5px;
+      border-bottom: 3px solid transparent;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    .selling-nav a:hover {
+      color: #0064d2;
+      border-bottom-color: #0064d2;
+      transform: translateY(-2px);
+    }
+
+    .selling-nav a.active {
+      color: #0064d2;
+      border-bottom-color: #0064d2;
+      font-weight: 600;
+    }
+
+    .selling-nav a::before {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #0064d2, transparent);
+      transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .selling-nav a:hover::before {
+      width: 100%;
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin: 40px 0;
+    }
+
+    .tip-card {
+      background: white;
+      border-radius: 8px;
+      padding: 30px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      border-left: 4px solid #0064d2;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .tip-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 12px rgba(0, 100, 210, 0.15);
+    }
+
+    .tip-card h3 {
+      color: #0064d2;
+      margin-bottom: 12px;
+      font-size: 18px;
+    }
+
+    .tip-card p {
+      color: #536077;
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+
+    .tip-number {
+      display: inline-block;
+      background: #eff6ff;
+      color: #0064d2;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 32px;
+      font-weight: bold;
+      margin-right: 10px;
+      font-size: 14px;
+    }
+
+    .cta-section {
+      background: linear-gradient(135deg, #0064d2 0%, #004fb8 100%);
+      color: white;
+      padding: 60px 40px;
+      border-radius: 12px;
+      text-align: center;
+      margin: 60px 0;
+    }
+
+    .cta-section h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+    }
+
+    .cta-section p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      opacity: 0.95;
+    }
+
+    .cta-btn {
+      display: inline-block;
+      background: white;
+      color: #0064d2;
+      padding: 14px 40px;
+      border-radius: 4px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .cta-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    footer {
+      background: #0f172a;
+      color: white;
+      padding: 50px 20px;
+      margin-top: 60px;
+    }
+
+    footer-links {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 30px;
+      max-width: 1200px;
+      margin: 0 auto 40px;
+    }
+
+    footer-link-group h3 {
+      margin-bottom: 15px;
+      font-size: 14px;
+      font-weight: 600;
+      color: #e5e5e5;
+    }
+
+    footer-link-group a {
+      display: block;
+      color: #a0a9b8;
+      text-decoration: none;
+      margin-bottom: 10px;
+      font-size: 13px;
+      transition: color 0.3s ease;
+    }
+
+    footer-link-group a:hover {
+      color: #0064d2;
+    }
+
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid #333;
+      padding-top: 20px;
+      color: #a0a9b8;
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 28px;
+      }
+
+      .tips-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .selling-nav {
+        gap: 15px;
+      }
+
+      .cta-section {
+        padding: 40px 20px;
+      }
+
+      .cta-section h2 {
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <nav>
+      <a href=\"/home.html\" class="logo">De-King</a>
+      <div style="display: flex; gap: 20px;">
+        <a href=\"/home.html\">Home</a>
+        <a href=\"/contact.html\">Help</a>
+        <a href=\"/sell.html\">Sell</a>
+        <a href=\"/account-settings.html\">Account</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <div class="container">
+    <h1>Seller Tips & Best Practices</h1>
+    <p class="subtitle">Master the art of selling with expert guidance and proven strategies</p>
+
+    <!-- Navigation Bar -->
+    <div class="selling-nav" id="sellingNav">
+      <a href=\"/sell.html\" class="nav-link" data-page="business" title="Main selling page">Business selling</a>
+      <a href=\"/selling-tips.html\" class="nav-link active" data-page="tips" title="Pro tips for successful listings">Tips for listing</a>
+      <a href=\"/selling-faq.html\" class="nav-link" data-page="faq" title="Frequently asked questions">FAQ</a>
+      <a href=\"/account-settings.html\" class="nav-link" data-page="myebay" title="Your account and listings">My eBay</a>
+    </div>
+
+    <!-- Tips Grid -->
+    <div class="tips-grid">
+      <div class="tip-card">
+        <h3><span class="tip-number">1</span>Compelling Product Photos</h3>
+        <p>Use high-quality images with natural lighting. Include multiple angles and close-ups of any defects. Clean product backgrounds make items stand out and increase buyer confidence significantly.</p>
+      </div>
+
+      <div class="tip-card">
+        <h3><span class="tip-number">2</span>Write Detailed Descriptions</h3>
+        <p>Include dimensions, materials, condition, and brand information. Highlight unique features and benefits. Be honest about any wear or damage to build trust and reduce disputes.</p>
+      </div>
+
+      <div class="tip-card">
+        <h3><span class="tip-number">3</span>Competitive Pricing Strategy</h3>
+        <p>Research similar items to price competitively. Consider using the 'compare prices' tool. Offer good value without underpricing - this attracts serious buyers while protecting your margin.</p>
+      </div>
+
+      <div class="tip-card">
+        <h3><span class="tip-number">4</span>Fast Shipping Options</h3>
+        <p>Offer expedited shipping alongside standard options. Use flat-rate shipping when beneficial. Process orders quickly - fast shipping builds your seller reputation and earns positive feedback.</p>
+      </div>
+
+      <div class="tip-card">
+        <h3><span class="tip-number">5</span>Customer Communication Excellence</h3>
+        <p>Respond to inquiries within 24 hours. Answer questions thoroughly and professionally. Keep buyers updated on shipment progress. Great communication leads to positive reviews and repeat customers.</p>
+      </div>
+
+      <div class="tip-card">
+        <h3><span class="tip-number">6</span>Build Your Seller Reputation</h3>
+        <p>Always describe items accurately. Pack items securely to prevent damage in transit. Deliver on your promises consistently. A strong reputation leads to higher sales and better buyer confidence.</p>
+      </div>
+
+      <div class="tip-card">
+        <h3><span class="tip-number">7</span>Strategic Product Keywords</h3>
+        <p>Use search-friendly terms that buyers use. Include brand names, materials, and condition. Think like a buyer - what words would you search for? Better keywords increase item visibility.</p>
+      </div>
+
+      <div class="tip-card">
+        <h3><span class="tip-number">8</span>Leverage Bulk Listing Tools</h3>
+        <p>Use CSV uploads for multiple items. Save time by creating item templates. Batch manage similar products efficiently. Focus on volume while maintaining quality standards.</p>
+      </div>
+
+      <div class="tip-card">
+        <h3><span class="tip-number">9</span>Learn from Analytics</h3>
+        <p>Monitor which items sell fastest. Track viewer-to-buyer conversion rates. Adjust pricing and descriptions based on performance data. Use insights to optimize future listings.</p>
+      </div>
+
+      <div class="tip-card">
+        <h3><span class="tip-number">10</span>Professional Storefront Presence</h3>
+        <p>Customize your seller profile with a shop banner and description. Maintain consistent branding and messaging. Create a professional image that makes buyers confident in your business.</p>
+      </div>
+    </div>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+      <h2>Ready to Put These Tips Into Action?</h2>
+      <p>Start listing your items today and begin earning with De-King</p>
+      <a href=\"/product-detail.html\" class="cta-btn">Create Your First Listing</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <footer-links>
+      <footer-link-group>
+        <h3>BUYING</h3>
+        <a href=\"/home.html\">Home</a>
+        <a href="/deals.html">Deals</a>
+        <a href="/brand-outlet.html">Featured</a>
+        <a href=\"/buying-help.html\">Buying Help</a>
+      </footer-link-group>
+      <footer-link-group>
+        <h3>SELLING</h3>
+        <a href=\"/sell.html\">Start Selling</a>
+        <a href=\"/selling-help.html\">Selling Help</a>
+        <a href=\"/selling-tips.html\">Seller Tips</a>
+        <a href=\"/fees-billing-help.html\">Fees & Billing</a>
+      </footer-link-group>
+      <footer-link-group>
+        <h3>ACCOUNT</h3>
+        <a href=\"/account-settings.html\">My Account</a>
+        <a href=\"/purchase-history.html\">Purchase History</a>
+        <a href=\"/saved.html\">Saved Items</a>
+        <a href=\"/account-help.html\">Account Help</a>
+      </footer-link-group>
+      <footer-link-group>
+        <h3>SUPPORT</h3>
+        <a href=\"/contact.html\">Contact Us</a>
+        <a href=\"/returns-refunds-help.html\">Returns & Refunds</a>
+        <a href=\"/shipping-tracking-help.html\">Shipping & Tracking</a>
+        <a href=\"/buying-help.html\">Help Center</a>
+      </footer-link-group>
+    </footer-links>
+    <div class="footer-bottom">
+      <p>&copy; 2024 De-King Marketplace. All rights reserved. | <a href=\"/home.html\" style="color: inherit; text-decoration: none;">Privacy Policy</a> | <a href=\"/home.html\" style="color: inherit; text-decoration: none;">Terms of Service</a></p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // Set active navigation based on current page
+      const currentPage = window.location.pathname.split('/').pop() || '/selling-tips.html';
+      const navLinks = document.querySelectorAll('.selling-nav a.nav-link');
+      
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        const href = link.getAttribute('href');
+        if (href === currentPage) {
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
